@@ -14,7 +14,7 @@ Ticketsystem zum Software Engineering Projekt an der IU
 
 # ToDo
 ## Frontend
-- [ ] Angular aufsetzen
+- [x] Angular aufsetzen
 - [ ] Struktur aufbauen
 - [ ] Schlichtes Design
 - [ ] Reale Daten abrufen
