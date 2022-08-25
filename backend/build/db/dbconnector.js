@@ -8,12 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const dbconnector_1 = require("./db/dbconnector");
-function init() {
+exports.connectToMongoDB = void 0;
+const mongoose_1 = require("mongoose");
+const config_1 = __importDefault(require("config"));
+function connectToMongoDB() {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log("Start init");
-        yield (0, dbconnector_1.connectToMongoDB)();
+        yield (0, mongoose_1.connect)(`mongodb://${config_1.default.get('db.host')}:${config_1.default.get('db.port')}/${config_1.default.get('db.db')}`);
+        console.log(`MongoDB connected`);
     });
 }
-init();
+exports.connectToMongoDB = connectToMongoDB;

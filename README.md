@@ -24,8 +24,9 @@ Ticketsystem zum Software Engineering Projekt an der IU
 ## Backend
 - [x] Nodejs aufsetzen 
 - [x] TypeScript aufsetzten
-- [ ] Struktur aufbauen
-- [ ] MongoDB aufsetzen
+- [x] Struktur aufbauen
+- [x] Config aufsetzen
+- [x] MongoDB aufsetzen
 - [ ] Redis aufsetzen
 - [ ] Schemas aufsetzen
 - [ ] GraphQL / Rest aufsetzen

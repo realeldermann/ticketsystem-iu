@@ -1,0 +1,7 @@
+{
+    "db": {
+        "port": 27018,
+        "host": "localhost",
+        "db": "typetest"
+    }
+}
