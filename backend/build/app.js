@@ -14,6 +14,7 @@ function init() {
     return __awaiter(this, void 0, void 0, function* () {
         console.log("Start init");
         yield (0, dbconnector_1.connectToMongoDB)();
+        console.log("End init");
     });
 }
 init();

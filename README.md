@@ -10,7 +10,6 @@ Ticketsystem zum Software Engineering Projekt an der IU
 - MongoDB
 - Mongoose
 - GraphQL
-- Redis
 
 # ToDo
 ## Frontend
@@ -27,8 +26,7 @@ Ticketsystem zum Software Engineering Projekt an der IU
 - [x] Struktur aufbauen
 - [x] Config aufsetzen
 - [x] MongoDB aufsetzen
-- [ ] Redis aufsetzen
-- [ ] Schemas aufsetzen
+- [X] Schemas aufsetzen
 - [ ] GraphQL / Rest aufsetzen
 - [ ] Tests mit einfachen eintragungen
 - [ ] Unit Tests
