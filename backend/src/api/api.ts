@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import config from "config"
 let TicketController = require("./ticket/TicketController")
 let ErrorHandler = require("./error/ErrorHandler")
+let UserController = require("./user/UserController")
 
 const app = express()
 
@@ -25,4 +26,5 @@ app.listen(port, host, () => {
 
 app.use(ErrorHandler)
 app.use(TicketController)
+app.use(UserController)
 }
