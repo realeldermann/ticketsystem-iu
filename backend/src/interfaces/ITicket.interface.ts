@@ -8,6 +8,7 @@ export interface ITicket {
     title: string,
     created: Date,
     status: boolean,
+    priority: number,
     text: string,
     categorie: Types.ObjectId | ICategorie,
     course: Types.ObjectId | ICourse,
