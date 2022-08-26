@@ -1,13 +1,9 @@
-import Session from "../../db/schemas/Session.schema";
 import Ticket from "../../db/schemas/Ticket.schema";
-import User from "../../db/schemas/User.schema";
+import { Types } from "mongoose";
 
-export async function findUserTicket(args: { userid: string }) {
+export async function findTicketById(args: { _id: string }) {
 
-            const ticket = await Ticket.find({ userid: args.userid });     
+            const ticket = await Ticket.findOne({ _id: new Types.ObjectId(args._id) });     
         
             return ticket;
     }
-
-    // Noch nicht funktionstüchtig
-    // Soll später das Suchen nach bestimmten Tickets ermöglichen (via Kurs, User und ID)
