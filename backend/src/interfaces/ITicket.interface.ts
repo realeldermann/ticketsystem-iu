@@ -1,5 +1,7 @@
 import { Types } from "mongoose";
 import { IUser } from "./IUser.interface"
+import { ICourse } from "./ICourse.interface";
+import { ICategorie } from "./ICategorie.interface";
 
 export interface ITicket {
     _id?: Types.ObjectId,
@@ -7,6 +9,7 @@ export interface ITicket {
     created: Date,
     status: boolean,
     text: string,
-    course: string,
+    categorie: Types.ObjectId | ICategorie,
+    course: Types.ObjectId | ICourse,
     user: Types.ObjectId | IUser
 }

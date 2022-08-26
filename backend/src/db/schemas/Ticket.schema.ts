@@ -6,7 +6,8 @@ const ticketSchema = new Schema<ITicket>({
     created: Date,
     status: Boolean,
     text: String,
-    course: String,
+    categorie: { type: 'ObjectId', ref: 'Categorie' },
+    course: { type: 'ObjectId', ref: 'Course' },
     user: { type: 'ObjectId', ref: 'User' },
 });
 
