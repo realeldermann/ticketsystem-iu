@@ -14,11 +14,11 @@ router.post('/tickets', (req: Request, res: Response) => { //gibt einfach alle T
     })
   })
 
-router.post('/tickets/id/find', async (req: Request, res: Response) => { //gibt einfach alle Tickets aus
+router.post('/tickets/id/find', async (req: Request, res: Response) => { //Ticket suche nach Ticket ID
   const ticket = await findTicketById(req.body)
   res.send(ticket)
   })
-router.post('/tickets/user/find', async (req: Request, res: Response) => { //gibt einfach alle Tickets aus
+router.post('/tickets/user/find', async (req: Request, res: Response) => { //Ticket suche nach User
   const ticket = await findTicketByUser(req.body)
   res.send(ticket)
   })
