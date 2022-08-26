@@ -8,5 +8,5 @@ export interface ITicket {
     status: boolean,
     text: string,
     course: string,
-   // user: Types.ObjectId | IUser
+    user: Types.ObjectId | IUser
 }

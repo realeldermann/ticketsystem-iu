@@ -6,13 +6,13 @@ let ErrorHandler = require('../error/ErrorHandler')
 
 const router = express.Router()
 
-router.get('/tickets', (req: Request, res: Response) => {
-    Ticket.find({},(_err: any, ticket: any)=> {
+router.post('/tickets', (req: Request, res: Response) => { //gibt einfach alle Tickets aus
+    Ticket.find((_err: any, ticket: any)=> {
       res.send(ticket);
     })
   })
 
-router.post('/tickets', (req: Request, res: Response) => {
+router.post('/tickets', (req: Request, res: Response) => { //erstellt ein neues Ticket
     var ticket = new Ticket(req.body);
     ticket.save((err: any) =>{
         if(err)
