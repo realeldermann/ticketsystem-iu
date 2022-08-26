@@ -9,7 +9,7 @@ Ticketsystem zum Software Engineering Projekt an der IU
 - Typescript 
 - MongoDB
 - Mongoose
-- GraphQL
+- Rest
 
 # ToDo
 ## Frontend
@@ -27,6 +27,8 @@ Ticketsystem zum Software Engineering Projekt an der IU
 - [x] Config aufsetzen
 - [x] MongoDB aufsetzen
 - [X] Schemas aufsetzen
-- [ ] GraphQL / Rest aufsetzen
-- [ ] Tests mit einfachen eintragungen
+- [x] Rest aufsetzen
+- [x] Tests mit einfachen eintragungen
+- [ ] Login via App? Oder einfach über Apache
+- [ ] User / Userrollen einfügen
 - [ ] Unit Tests

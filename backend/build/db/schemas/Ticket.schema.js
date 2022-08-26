@@ -7,7 +7,7 @@ const ticketSchema = new mongoose_1.Schema({
     status: Boolean,
     text: String,
     course: String,
-    user: { type: 'ObjectId', ref: 'User' },
+    // user: { type: 'ObjectId', ref: 'User' },
 });
 const Ticket = (0, mongoose_1.model)('Ticket', ticketSchema);
 exports.default = Ticket;

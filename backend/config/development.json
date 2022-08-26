@@ -3,5 +3,9 @@
         "port": 27018,
         "host": "localhost",
         "db": "typetest"
+    },
+    "api": {
+        "port": 3123,
+        "host": "localhost"
     }
 }

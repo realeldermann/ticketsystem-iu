@@ -7,7 +7,7 @@ const ticketSchema = new Schema<ITicket>({
     status: Boolean,
     text: String,
     course: String,
-    user: { type: 'ObjectId', ref: 'User' },
+   // user: { type: 'ObjectId', ref: 'User' },
 });
 
 const Ticket = model<ITicket>('Ticket', ticketSchema);

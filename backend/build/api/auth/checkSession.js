@@ -8,15 +8,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const dbconnector_1 = require("./db/dbconnector");
-const api_1 = require("./api/api");
-function init() {
+exports.checkSession = void 0;
+const Session_schema_1 = __importDefault(require("../../db/schemas/Session.schema"));
+function checkSession(sessionToken) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log("Start init");
-        yield (0, dbconnector_1.connectToMongoDB)();
-        (0, api_1.startApi)();
-        console.log("End init");
+        const session = yield Session_schema_1.default.findOne({ token: sessionToken }).populate('user');
+        if (session && session.expires && session.expires.getTime() < Date.now()) {
+            yield Session_schema_1.default.deleteOne({ _id: session._id });
+            return null;
+        }
+        else
+            return session;
     });
 }
-init();
+exports.checkSession = checkSession;
