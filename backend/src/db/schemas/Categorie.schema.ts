@@ -5,5 +5,5 @@ const categorieSchema = new Schema<ICategorie>({
     name: String,
 });
 
-const Categories = model<ICategorie>('Categories', categorieSchema);
-export default Categories;
+const Categorie = model<ICategorie>('Categorie', categorieSchema);
+export default Categorie;

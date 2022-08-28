@@ -2,8 +2,11 @@ import express, { Request, Response } from 'express'
 import bodyParser from 'body-parser'
 import config from "config"
 let TicketController = require("./ticket/TicketController")
-let ErrorHandler = require("./error/ErrorHandler")
 let UserController = require("./user/UserController")
+let CourseController = require("./course/CourseController")
+let CategorieController = require("./categorie/CategorieController")
+let ErrorHandler = require("./error/ErrorHandler")
+
 
 const app = express()
 
@@ -25,6 +28,9 @@ app.listen(port, host, () => {
 })
 
 app.use(ErrorHandler)
+app.use(CourseController)
+app.use(CategorieController)
 app.use(TicketController)
 app.use(UserController)
+
 }

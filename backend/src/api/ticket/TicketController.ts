@@ -1,24 +1,21 @@
 import express, { Request, Response } from 'express'
-import mongoose from 'mongoose'
 import Ticket from '../../db/schemas/Ticket.schema'
-import User from '../../db/schemas/User.schema'
 import { deleteTicket } from './deleteTicket'
-import { findTicketById, findTicketByUser } from './findTicket'
+import { findTicket, findTicketById, findTicketByUser } from './findTicket'
 let ErrorHandler = require('../error/ErrorHandler')
 
 const router = express.Router()
 
-router.post('/tickets', (req: Request, res: Response) => { //gibt einfach alle Tickets aus
-    Ticket.find((_err: any, ticket: any)=> {
-      res.send(ticket);
-    })
+router.get('/tickets', async (req: Request, res: Response) => { //gibt Tickets zur Session aus
+  const ticket = await findTicket(req.body)
+  res.send(ticket)
   })
 
-router.post('/tickets/id/find', async (req: Request, res: Response) => { //Ticket suche nach Ticket ID
+router.get('/tickets/id/find', async (req: Request, res: Response) => { //Ticket suche nach Ticket ID
   const ticket = await findTicketById(req.body)
   res.send(ticket)
   })
-router.post('/tickets/user/find', async (req: Request, res: Response) => { //Ticket suche nach User
+router.get('/tickets/user/find', async (req: Request, res: Response) => { //Ticket suche nach User
   const ticket = await findTicketByUser(req.body)
   res.send(ticket)
   })
@@ -40,5 +37,10 @@ router.post('/tickets/new', (req: Request, res: Response) => { //erstellt ein ne
   else 
       res.sendStatus(500)
   })
+
+//router.get('/test', async (req: Request, res: Response) => { //Test
+//  const test = await checkSession(req.body)
+//    res.send(test)
+//})
   
 module.exports = router;

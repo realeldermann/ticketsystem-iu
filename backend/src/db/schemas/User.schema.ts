@@ -6,7 +6,8 @@ const userSchema = new Schema<IUser>({
     email: String,
     passwordHash: String,
     passwordSalt: String,
-    created: Date
+    created: Date,
+    course: { type: 'ObjectId', ref: 'Course' },
 });
 
 const User = model<IUser>('User', userSchema);
