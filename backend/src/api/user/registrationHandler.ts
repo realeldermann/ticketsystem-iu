@@ -3,7 +3,7 @@ import express, { Request, Response } from 'express'
 //import { pubsub } from "../api";
 import { generateRandomString, generateSalt, hashPassword } from "./cryptoUtils";
 
-export async function registrationHandler(args: { registrationInput: { email: string, password: string, name: string } }) {
+export async function registrationHandler(args: { registrationInput: { email: string, password: string, name: string, course: string } }) {
     const existingUser = await User.findOne({ email: args.registrationInput.email });
     
     if(existingUser) {
@@ -18,11 +18,8 @@ export async function registrationHandler(args: { registrationInput: { email: st
             name: args.registrationInput.name,
             passwordSalt: salt,
             passwordHash: hash,
-            permissions: ['*'],
             email: args.registrationInput.email,
-            activated: false,
-            activationKey: generateRandomString(32),
-            deactivated: false,
+            course: args.registrationInput.course,
             created: new Date(),
         });
     

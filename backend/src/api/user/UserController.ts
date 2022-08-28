@@ -11,7 +11,8 @@ router.post('/login', async (req: Request, res: Response) => {
     
     if (await loginHandler(req.body)) {
         const session = await loginHandler(req.body)
-        res.send(session)
+        res.setHeader('session', session)
+        res.sendStatus(200)
     }
     else 
         res.sendStatus(500)

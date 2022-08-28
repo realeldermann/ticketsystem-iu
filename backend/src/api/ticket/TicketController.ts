@@ -1,15 +1,42 @@
 import express, { Request, Response } from 'express'
 import Ticket from '../../db/schemas/Ticket.schema'
 import { deleteTicket } from './deleteTicket'
-import { findTicket, findTicketById, findTicketByUser } from './findTicket'
+import { findOwnCourseTicket, findOwnTicket, findTicketById, findTicketByUser } from './findTicket'
 let ErrorHandler = require('../error/ErrorHandler')
 
 const router = express.Router()
 
-router.get('/tickets', async (req: Request, res: Response) => { //gibt Tickets zur Session aus
-  const ticket = await findTicket(req.body)
-  res.send(ticket)
+router.get('/tickets/own', async (req: Request, res: Response) => { //gibt Tickets zur Session aus
+  let sessionToken = req.headers.cookie
+  if (sessionToken != null) {
+   try {
+    const ticket = await findOwnTicket({sessionToken})
+    res.send(ticket)
+   } catch(e) {
+    console.error(e);
+    throw new Error('Internal server error');
+}
+  } else {
+    res.send("No Session found!")
+  }
+
   })
+
+  router.get('/tickets/course', async (req: Request, res: Response) => { //gibt Tickets des Kurses der Session aus
+    let sessionToken = req.headers.cookie
+    if (sessionToken != null) {
+     try {
+      const ticket = await findOwnCourseTicket({sessionToken})
+      res.send(ticket)
+     } catch(e) {
+      console.error(e);
+      throw new Error('Internal server error');
+  }
+    } else {
+      res.send("No Session found!")
+    }
+  
+    })
 
 router.get('/tickets/id/find', async (req: Request, res: Response) => { //Ticket suche nach Ticket ID
   const ticket = await findTicketById(req.body)
@@ -20,7 +47,7 @@ router.get('/tickets/user/find', async (req: Request, res: Response) => { //Tick
   res.send(ticket)
   })
 
-router.post('/tickets/new', (req: Request, res: Response) => { //erstellt ein neues Ticket
+router.post('/tickets', (req: Request, res: Response) => { //erstellt ein neues Ticket
     var ticket = new Ticket(req.body);
     ticket.save((err: any) =>{
         if(err)
@@ -30,7 +57,7 @@ router.post('/tickets/new', (req: Request, res: Response) => { //erstellt ein ne
     })
   })
 
-  router.post('/tickets/del', async (req: Request, res: Response) => { //löscht ein Ticket
+  router.delete('/tickets', async (req: Request, res: Response) => { //löscht ein Ticket
     if (await deleteTicket(req.body) === true) {
       res.sendStatus(200)
   }
