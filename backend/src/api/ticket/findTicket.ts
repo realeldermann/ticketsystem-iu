@@ -10,6 +10,14 @@ export async function findOwnTicket(args: { sessionToken: string }) {
         return ticket;
 }
 
+export async function findTicketUser(args: { sessionToken: string }) {
+
+        const userid = await checkSessionUser({sessionToken: args.sessionToken})
+        const ticket = await Ticket.findOne({ user: userid });     
+        console.log(ticket?.user)
+        return ticket?.user;
+}
+
 export async function findOwnCourseTicket(args: { sessionToken: string }) {
 
         //const userid = await checkSessionUser({sessionToken: args.sessionToken})

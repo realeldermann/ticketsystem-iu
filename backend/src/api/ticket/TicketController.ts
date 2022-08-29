@@ -1,7 +1,8 @@
 import express, { Request, Response } from 'express'
 import Ticket from '../../db/schemas/Ticket.schema'
+import { checkSessionUser } from '../auth/checkSession'
 import { deleteTicket } from './deleteTicket'
-import { findOwnCourseTicket, findOwnTicket, findTicketById, findTicketByUser } from './findTicket'
+import { findOwnCourseTicket, findOwnTicket, findTicketById, findTicketByUser, findTicketUser } from './findTicket'
 let ErrorHandler = require('../error/ErrorHandler')
 
 const router = express.Router()
@@ -57,12 +58,23 @@ router.post('/tickets', (req: Request, res: Response) => { //erstellt ein neues 
     })
   })
 
-  router.delete('/tickets', async (req: Request, res: Response) => { //löscht ein Ticket
-    if (await deleteTicket(req.body) === true) {
-      res.sendStatus(200)
-  }
-  else 
-      res.sendStatus(500)
+router.delete('/tickets', async (req: Request, res: Response) => { //löscht ein Ticket
+  let sessionToken = req.headers.cookie
+    if (sessionToken != null) { 
+      if ((await checkSessionUser({sessionToken}).toString()) ==  (await findTicketUser({sessionToken}).toString())) {
+       try {
+          await deleteTicket(req.body)
+        res.sendStatus(200)
+      } catch(e) {
+        console.error(e);
+        throw new Error('Internal server error');
+      }
+      } else {
+        res.send("Not permitted")
+      }
+    } else {
+      res.send("No Session found!")
+    }
   })
 
 //router.get('/test', async (req: Request, res: Response) => { //Test

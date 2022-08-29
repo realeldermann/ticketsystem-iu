@@ -5,6 +5,7 @@ import { Types } from "mongoose";
 
 export async function checkSessionUser(args: {sessionToken: string}){
     const sessionUser = await Session.findOne({ token: args.sessionToken }, 'user -_id');
+    console.log(sessionUser?.user)
     return sessionUser?.user
 }
 
