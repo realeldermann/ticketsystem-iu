@@ -7,6 +7,7 @@ export interface IUser {
     email: string,
     passwordHash?: string,
     passwordSalt?: string,
-    created: Date
+    created: Date,
+    admin: boolean,
     course: Types.ObjectId | ICourse,
 }

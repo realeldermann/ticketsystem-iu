@@ -4,9 +4,20 @@ import User from "../../db/schemas/User.schema";
 import { Types } from "mongoose";
 
 export async function checkSessionUser(args: {sessionToken: string}){
-    const sessionUser = await Session.findOne({ token: args.sessionToken }, 'user -_id');
-    console.log("Session User: " + sessionUser?.user)
-    return sessionUser?.user
+    const sessionUserId = await Session.findOne({ token: args.sessionToken }, 'user -_id');
+    console.log("Session User: " + sessionUserId?.user)
+    return sessionUserId?.user
+}
+
+export async function checkSessionUserIsAdmin(args: {sessionToken: string}){
+    const sessionUserId = await checkSessionUser({ sessionToken: args.sessionToken });
+    const sessionUser = await User.findOne({ _id: new Types.ObjectId(sessionUserId?._id) } )
+    console.log(sessionUser?.admin)
+        if (sessionUser?.admin == true) {
+            return true
+        } else {
+            return false
+        }
 }
 
 export async function checkSessionUserCourses(args: {sessionToken: string}){

@@ -7,6 +7,7 @@ const userSchema = new Schema<IUser>({
     passwordHash: String,
     passwordSalt: String,
     created: Date,
+    admin: Boolean,
     course: { type: 'ObjectId', ref: 'Course' },
 });
 
