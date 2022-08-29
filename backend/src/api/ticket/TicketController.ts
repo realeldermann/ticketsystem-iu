@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express'
 import Ticket from '../../db/schemas/Ticket.schema'
 import { checkSessionUser } from '../auth/checkSession'
 import { deleteTicket } from './deleteTicket'
-import { findOwnCourseTicket, findOwnTicket, findTicketById, findTicketByUser, findTicketUser } from './findTicket'
+import { findOwnCourseTicket, findOwnTicket, findTicketById, findTicketByUser, findTicketCourseTutor, findTicketUser, findTicketUserById } from './findTicket'
 let ErrorHandler = require('../error/ErrorHandler')
 
 const router = express.Router()
@@ -58,10 +58,10 @@ router.post('/tickets', (req: Request, res: Response) => { //erstellt ein neues 
     })
   })
 
-router.delete('/tickets', async (req: Request, res: Response) => { //löscht ein Ticket
+router.delete('/tickets', async (req: Request, res: Response) => { //löscht ein Ticket nach abfrage der Berechtigung (if TicketOwner oder Tutor des Ticket Kurses)
   let sessionToken = req.headers.cookie
-    if (sessionToken != null) { 
-      if ((await checkSessionUser({sessionToken}).toString()) ==  (await findTicketUser({sessionToken}).toString())) {
+    if (sessionToken != null || sessionToken != undefined) { 
+      if ((await checkSessionUser({sessionToken})?? '').toString() == (await findTicketUserById(req.body)?? '').toString() || (await checkSessionUser({sessionToken})?? '').toString() == (await findTicketCourseTutor(req.body)?? '').toString()) {
        try {
           await deleteTicket(req.body)
         res.sendStatus(200)
