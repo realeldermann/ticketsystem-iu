@@ -14,7 +14,7 @@ const port = config.get("api.port") as number
 const host = config.get("api.host") as string
 
 
-export function startApi() {
+export function startApi() { //startet REST
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 

@@ -8,11 +8,11 @@ let ErrorHandler = require('../error/ErrorHandler')
 const router = express.Router()
 
 router.post('/categorie', async (req: Request, res: Response) => { //erstellt eine neue Kategorie (if Admin = true)
-    let sessionToken = req.headers.cookie
+  let sessionToken = req.headers.cookie
     if (sessionToken != null || sessionToken != undefined) { 
       if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
        try {
-        const categorie = new Categorie({
+          const categorie = new Categorie({
           name: req.body.name
         })
         await categorie.save()
@@ -27,19 +27,19 @@ router.post('/categorie', async (req: Request, res: Response) => { //erstellt ei
     } else {
       res.sendStatus(403)
     }
-  })
+})
 
-  router.get('/categorie', async (req: Request, res: Response) => { //gibt alle Kategorien aus
-    let sessionToken = req.headers.cookie
+router.get('/categorie', async (req: Request, res: Response) => { //gibt alle Kategorien aus
+  let sessionToken = req.headers.cookie
     if (sessionToken != null || sessionToken != undefined) {
-        if (await checkSessionUser({sessionToken}) != undefined) {
-            try {
-                const categorie = await findAllCategories({})
-                 res.send(categorie)
-            } catch(e) {
-                  console.error(e);
-                  throw new Error('Internal server error');
-                }
+      if (await checkSessionUser({sessionToken}) != undefined) {
+        try {
+          const categorie = await findAllCategories({})
+          res.send(categorie)
+        } catch(e) {
+          console.error(e);
+          throw new Error('Internal server error');
+          }
         } else {
             res.sendStatus(403) 
         }   
@@ -48,13 +48,13 @@ router.post('/categorie', async (req: Request, res: Response) => { //erstellt ei
     }
 })
 
-  router.delete('/categorie', async (req: Request, res: Response) => { //löscht eine Kategorie (if Admin = true)
-    let sessionToken = req.headers.cookie
+router.delete('/categorie', async (req: Request, res: Response) => { //löscht eine Kategorie (if Admin = true)
+  let sessionToken = req.headers.cookie
     if (sessionToken != null || sessionToken != undefined) { 
       if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
        try {
-            await deleteCategorie(req.body)
-            res.sendStatus(200)
+        await deleteCategorie(req.body)
+        res.sendStatus(200)
       } catch(e) {
         console.error(e);
         throw new Error('Internal server error');
@@ -65,6 +65,6 @@ router.post('/categorie', async (req: Request, res: Response) => { //erstellt ei
     } else {
       res.sendStatus(403)
     }
-  })
+})
 
 module.exports = router;

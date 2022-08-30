@@ -2,7 +2,7 @@ import Session from "../../db/schemas/Session.schema";
 import User from "../../db/schemas/User.schema";
 import { generateRandomString, hashPassword } from "./cryptoUtils";
 
-export async function loginHandler(args: { email: string, password: string }) {
+export async function loginHandler(args: { email: string, password: string }) { //prüft Username und Passwort if true gibt Session token zurück
     const user = await User.findOne({ email: args.email });
     const hashedInput = hashPassword(args.password, user && user.passwordSalt ? user.passwordSalt : '');
 

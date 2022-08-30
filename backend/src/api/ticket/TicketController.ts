@@ -2,72 +2,71 @@ import express, { Request, Response } from 'express'
 import Ticket from '../../db/schemas/Ticket.schema'
 import { checkSessionUser, checkSessionUserCourses, checkSessionUserIsAdmin } from '../auth/checkSession'
 import { deleteTicket } from './deleteTicket'
-import { findOwnCourseTicket, findOwnTicket, findTicketById, findTicketByUser, findTicketCourseTutor, findTicketUser, findTicketUserById } from './findTicket'
+import { findOwnCourseTicket, findOwnTicket, findTicketByCourse, findTicketById, findTicketByUser, findTicketCourseTutor, findTicketUser, findTicketUserById } from './findTicket'
 let ErrorHandler = require('../error/ErrorHandler')
 
 const router = express.Router()
 
 router.get('/tickets/own', async (req: Request, res: Response) => { //gibt Tickets zur Session aus
   let sessionToken = req.headers.cookie
-  if (sessionToken != null || sessionToken != undefined) {
-   try {
-    const ticket = await findOwnTicket({sessionToken})
-    res.send(ticket)
-   } catch(e) {
-    console.error(e);
-    throw new Error('Internal server error');
-}
-  } else {
-      res.sendStatus(403)
-  }
-
-  })
-
-  router.get('/tickets/own/course', async (req: Request, res: Response) => { //gibt Tickets des Kurses der Session aus
-    let sessionToken = req.headers.cookie
     if (sessionToken != null || sessionToken != undefined) {
-     try {
-      const ticket = await findOwnCourseTicket({sessionToken})
-      res.send(ticket)
-     } catch(e) {
-      console.error(e);
-      throw new Error('Internal server error');
-  }
+      try {
+        const ticket = await findOwnTicket({sessionToken})
+        res.send(ticket)
+      } catch(e) {
+        console.error(e);
+        throw new Error('Internal server error');
+        }
     } else {
         res.sendStatus(403)
     }
-  
-    })
+
+})
+
+router.get('/tickets/own/course', async (req: Request, res: Response) => { //gibt Tickets des Kurses der Session aus
+  let sessionToken = req.headers.cookie
+    if (sessionToken != null || sessionToken != undefined) {
+      try {
+        const ticket = await findOwnCourseTicket({sessionToken})
+        res.send(ticket)
+     } catch(e) {
+        console.error(e);
+        throw new Error('Internal server error');
+        }
+    } else {
+        res.sendStatus(403)
+    } 
+})
 
 router.get('/tickets/id/find', async (req: Request, res: Response) => { //Ticket suche nach Ticket ID (if Admin = true)
   let sessionToken = req.headers.cookie
-  if (sessionToken != null || sessionToken != undefined) {
+    if (sessionToken != null || sessionToken != undefined) {
       try {
-          if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
-            const ticket = await findTicketById(req.body)
-            res.send(ticket)
-                  res.sendStatus(200)
-              } else 
-                  res.sendStatus(403)
+        if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
+          const ticket = await findTicketById(req.body)
+          res.send(ticket)
+        } else {
+            res.sendStatus(403)
+          }
       } catch(e) {
           console.error(e);
           throw new Error('Internal server error');
-          }
-  } else {
-      res.sendStatus(403)
+        }
+    } else {
+        res.sendStatus(403)
   }
 })
 
 router.get('/tickets/user/find', async (req: Request, res: Response) => { //Ticket suche nach User (if Admin = true)
   let sessionToken = req.headers.cookie
-  if (sessionToken != null || sessionToken != undefined) {
+    if (sessionToken != null || sessionToken != undefined) {
       try {
-          if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
-            const ticket = await findTicketByUser(req.body)
-            res.send(ticket)
-                  res.sendStatus(200)
-              } else 
-                  res.sendStatus(403)
+        if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
+          const ticket = await findTicketByUser(req.body)
+          res.send(ticket)
+        } else {
+          res.sendStatus(403)
+        } 
       } catch(e) {
           console.error(e);
           throw new Error('Internal server error');
@@ -75,7 +74,26 @@ router.get('/tickets/user/find', async (req: Request, res: Response) => { //Tick
   } else {
       res.sendStatus(403)
   } 
-  })
+})
+
+router.get('/tickets/course/find', async (req: Request, res: Response) => { //Ticket suche nach Kurs (if Admin = true)
+  let sessionToken = req.headers.cookie
+    if (sessionToken != null || sessionToken != undefined) {
+      try {
+        if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
+          const ticket = await findTicketByCourse(req.body.course)
+          res.send(ticket)
+        } else {
+          res.sendStatus(403)
+          }
+      } catch(e) {
+          console.error(e);
+          throw new Error('Internal server error');
+        }
+    } else {
+        res.sendStatus(403)
+    } 
+})
 
 router.post('/tickets', async (req: Request, res: Response) => { //erstellt ein neues Ticket if course = user course oder if Admin = true
   let sessionToken = req.headers.cookie
@@ -105,7 +123,7 @@ router.post('/tickets', async (req: Request, res: Response) => { //erstellt ein 
     } else {
       res.sendStatus(403)
     }
-  })
+})
 
 router.delete('/tickets', async (req: Request, res: Response) => { //löscht ein Ticket nach abfrage der Berechtigung (if TicketOwner, Tutor des Ticket Kurses oder if Admin = true)
   let sessionToken = req.headers.cookie
@@ -113,7 +131,7 @@ router.delete('/tickets', async (req: Request, res: Response) => { //löscht ein
       if ((await checkSessionUser({sessionToken})?? '').toString() == (await findTicketUserById(req.body)?? '').toString() || (await checkSessionUser({sessionToken})?? '').toString() == (await findTicketCourseTutor(req.body)?? '').toString() || (await checkSessionUserIsAdmin({ sessionToken })) == true) {
        try {
           await deleteTicket(req.body)
-        res.sendStatus(200)
+          res.sendStatus(200)
       } catch(e) {
         console.error(e);
         throw new Error('Internal server error');
@@ -127,8 +145,8 @@ router.delete('/tickets', async (req: Request, res: Response) => { //löscht ein
   })
 
 //router.get('/test', async (req: Request, res: Response) => { //Test
-//  const test = await checkSession(req.body)
-//    res.send(test)
+// const test = await findTicketByCourse(req.body.course)
+//  res.send(test)
 //})
   
 module.exports = router;
