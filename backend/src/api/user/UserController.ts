@@ -16,7 +16,7 @@ router.post('/login', async (req: Request, res: Response) => {
         res.sendStatus(200)
     }
     else 
-        res.sendStatus(500)
+        res.sendStatus(403)
     })
 
 
@@ -37,7 +37,7 @@ router.post('/registration', async (req: Request, res: Response) => { //registri
             throw new Error('Internal server error');
             }
     } else {
-        res.send("No Session found!")
+        res.sendStatus(403)
     }
 })
   

@@ -12,7 +12,7 @@ export async function checkSessionUser(args: {sessionToken: string}){
 export async function checkSessionUserIsAdmin(args: {sessionToken: string}){
     const sessionUserId = await checkSessionUser({ sessionToken: args.sessionToken });
     const sessionUser = await User.findOne({ _id: new Types.ObjectId(sessionUserId?._id) } )
-    console.log(sessionUser?.admin)
+    console.log("User is Admin?: " + sessionUser?.admin)
         if (sessionUser?.admin == true) {
             return true
         } else {
@@ -22,6 +22,7 @@ export async function checkSessionUserIsAdmin(args: {sessionToken: string}){
 
 export async function checkSessionUserCourses(args: {sessionToken: string}){
     const sessionUser = await checkSessionUser({sessionToken: args.sessionToken})
-    const sessionUserCourse = await User.findOne({  _id: new Types.ObjectId(sessionUser?._id)  }, 'course -_id');
+    const sessionUserCourse = await User.findOne({  _id: new Types.ObjectId(sessionUser?._id)  }, 'course -_id')
+    console.log("User Course: " + sessionUserCourse?.course)
     return sessionUserCourse?.course
 }

@@ -6,10 +6,10 @@ Ticketsystem zum Software Engineering Projekt an der IU
 - Angular App 
 ### Backend
 - Node.js
-- Typescript 
+- TypeScript 
 - MongoDB
 - Mongoose
-- Rest
+- REST via Express
 
 # ToDo
 ## Frontend
@@ -27,8 +27,14 @@ Ticketsystem zum Software Engineering Projekt an der IU
 - [x] Config aufsetzen
 - [x] MongoDB aufsetzen
 - [X] Schemas aufsetzen
-- [x] Rest aufsetzen
+- [x] REST aufsetzen
 - [x] Tests mit einfachen eintragungen
-- [ ] Login via App? Oder einfach über Apache
-- [ ] User / Userrollen einfügen
+- [x] Login via Session Cookie
+- [x] User / Userrollen einfügen
+- [ ] Tickets komplett
+- [ ] Kategorien komplett
+- [ ] Kurse komplett
+- [ ] Priorisierungen komplett
+- [ ] Alle Berechtigungen über Session komplett
+- [ ] IT-Sicherheit geprüft
 - [ ] Unit Tests

@@ -1,7 +1,7 @@
 import Ticket from "../../db/schemas/Ticket.schema";
 import { Types } from "mongoose";
 import { checkSessionUser, checkSessionUserCourses } from "../auth/checkSession";
-import { findCourseTutor } from "../categorie/findCourse";
+import { findCourseTutor } from "../course/findCourse";
 
 export async function findOwnTicket(args: { sessionToken: string }) {
 
@@ -27,7 +27,6 @@ export async function findTicketUserById(args: { _id: string }) {
 
 export async function findOwnCourseTicket(args: { sessionToken: string }) {
 
-        //const userid = await checkSessionUser({sessionToken: args.sessionToken})
         const userCourse = await checkSessionUserCourses({sessionToken: args.sessionToken})
         const ticket = await Ticket.find({ course: userCourse });     
         
