@@ -34,7 +34,6 @@ export async function findTicketByPrio(args: { sessionToken: string, priority: n
 
                 return ticket
         } else {
-                console.log("A")
                 const ticket = await Ticket.findOne({priority: args.priority})
                 return ticket
         }
@@ -49,7 +48,7 @@ export async function findOwnCourseTicket(args: { sessionToken: string }) { //gi
 }
 
 export async function findTicketCourseTutor(args: { _id: string }) { //gibt den Tutor des Kurses eines via ID gesuchten Tickets aus
-
+        console.log("Kos")
         const ticketCourse = await findTicketCourseById({_id: args._id})
         if (ticketCourse != undefined){
                 const courseTutor = await findCourseTutor({_id: ticketCourse})  
@@ -81,7 +80,7 @@ export async function findTicketByCourse(args: { course: string }) { //gibt alle
 }
 
 export async function findTicketCourseById(args: { _id: string }) { //gibt den Kurs eines via ID gesuchten Tickets aus
-
+        console.log("bla")
         const ticket = await Ticket.findOne({ _id: new Types.ObjectId(args._id) });     
         
         return ticket?.course.toString();

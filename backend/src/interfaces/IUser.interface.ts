@@ -4,6 +4,7 @@ import { ICourse } from "./ICourse.interface";
 export interface IUser {
     _id?: Types.ObjectId,
     name?: string,
+    firstname?: string,
     email: string,
     passwordHash?: string,
     passwordSalt?: string,

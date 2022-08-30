@@ -3,6 +3,7 @@ import { IUser } from "../../interfaces/IUser.interface";
 
 const userSchema = new Schema<IUser>({
     name: String,
+    firstname: String,
     email: String,
     passwordHash: String,
     passwordSalt: String,

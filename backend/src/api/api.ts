@@ -5,6 +5,7 @@ let TicketController = require("./ticket/TicketController")
 let UserController = require("./user/UserController")
 let CourseController = require("./course/CourseController")
 let CategorieController = require("./categorie/CategorieController")
+let AnnotationController = require("./annotation/AnnotationController")
 let ErrorHandler = require("./error/ErrorHandler")
 
 
@@ -32,5 +33,6 @@ app.use(CourseController)
 app.use(CategorieController)
 app.use(TicketController)
 app.use(UserController)
+app.use(AnnotationController)
 
 }

@@ -1,9 +1,11 @@
 import express, { Request, Response } from 'express'
+import { Types } from 'mongoose'
 import Ticket from '../../db/schemas/Ticket.schema'
+import { annotationHandler } from '../annotation/newAnnotation'
 import { checkSessionCourseTutor, checkSessionUser, checkSessionUserCourses, checkSessionUserIsAdmin } from '../auth/checkSession'
 import { findCourseTutor, findTutorCourseId } from '../course/findCourse'
 import { deleteTicket } from './deleteTicket'
-import { findOwnCourseTicket, findOwnTicket, findTicketByCourse, findTicketById, findTicketByPrio, findTicketByUser, findTicketCourseTutor, findTicketUserById } from './findTicket'
+import { findOwnCourseTicket, findOwnTicket, findTicketByCourse, findTicketById, findTicketByPrio, findTicketByUser, findTicketCourseById, findTicketCourseTutor, findTicketUserById } from './findTicket'
 let ErrorHandler = require('../error/ErrorHandler')
 
 const router = express.Router()
@@ -133,6 +135,7 @@ router.post('/tickets', async (req: Request, res: Response) => { //erstellt ein 
           text: req.body.text,
           categorie: req.body.categorie,
           course: req.body.course,
+          annotation: null,
           user: await checkSessionUser({sessionToken})
         })
         await ticket.save()
@@ -141,6 +144,33 @@ router.post('/tickets', async (req: Request, res: Response) => { //erstellt ein 
         console.error(e);
         throw new Error('Internal server error');
       }
+      } else {
+        res.sendStatus(403)
+      }
+    } else {
+      res.sendStatus(403)
+    }
+})
+
+router.post('/tickets/annotation', async (req: Request, res: Response) => { //erstellt eine neue Ticket anmerkung / Kommentar if course = user course oder if Admin = true
+  let sessionToken = req.headers.cookie
+    if (sessionToken != null || sessionToken != undefined) { 
+      if (((await checkSessionUserCourses({sessionToken})?? '').toString() == (await findTicketCourseById(req.body._id))) || ((await checkSessionCourseTutor({sessionToken})?? '').toString() == (await findTicketCourseTutor(req.body._id)?? '').toString()) || ((await checkSessionUserIsAdmin({ sessionToken })) == true)) {
+       try {
+          console.log("True")
+          Ticket.findOneAndUpdate(
+            { _id: req.body._id},
+              {annotation: 
+                (await annotationHandler({
+                text: req.body.text,
+                user: (await checkSessionUser({sessionToken})?? '').toString()
+              }))
+            })
+          res.sendStatus(200)
+        } catch(e) {
+          console.error(e);
+          throw new Error('Internal server error');
+        }
       } else {
         res.sendStatus(403)
       }
