@@ -1,6 +1,6 @@
 import Ticket from "../../db/schemas/Ticket.schema";
 import { Types } from "mongoose";
-import { checkSessionUser, checkSessionUserCourses } from "../auth/checkSession";
+import { checkSessionUser, checkSessionUserCourses, checkSessionUserIsAdmin } from "../auth/checkSession";
 import { findCourseTutor } from "../course/findCourse";
 
 export async function findOwnTicket(args: { sessionToken: string }) { //gibt alle Tickets zur Session aus (Meine Tickets)
@@ -23,6 +23,21 @@ export async function findTicketUserById(args: { _id: string }) { //gibt den Use
         const ticket = await Ticket.findOne({ _id: new Types.ObjectId(args._id) });
 
         return ticket?.user;
+}
+
+export async function findTicketByPrio(args: { sessionToken: string, priority: number }) { //gibt alle Tickets mit der gesuchten Prio des Kurses aus, wo der User Tutor ist  (Tickets meines Kurses)
+        console.log(args.sessionToken)
+        const userCourse = await checkSessionUserCourses({sessionToken: args.sessionToken})
+        const userAdmin = await checkSessionUserIsAdmin({sessionToken: args.sessionToken})
+        if (userCourse != undefined && (await checkSessionUserIsAdmin({ sessionToken: args.sessionToken })) == false){
+                const ticket = await Ticket.find({course: userCourse, priority: args.priority})
+
+                return ticket
+        } else {
+                console.log("A")
+                const ticket = await Ticket.findOne({priority: args.priority})
+                return ticket
+        }
 }
 
 export async function findOwnCourseTicket(args: { sessionToken: string }) { //gibt alle Tickets des Kurses eines Users aus (Tickets meines Kurses)

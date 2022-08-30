@@ -2,6 +2,7 @@ import { ISession } from "../../interfaces/ISession.interface";
 import Session from "../../db/schemas/Session.schema";
 import User from "../../db/schemas/User.schema";
 import { Types } from "mongoose";
+import { findCourseTutor, findTutorCourseId } from "../course/findCourse";
 
 export async function checkSessionUser(args: {sessionToken: string}){ //überprüft den User aus der Session
     const sessionUserId = await Session.findOne({ token: args.sessionToken }, 'user -_id');
@@ -27,4 +28,22 @@ export async function checkSessionUserCourses(args: {sessionToken: string}){ //�
     console.log("User Course: " + sessionUserCourse?.course)
 
     return sessionUserCourse?.course
+}
+
+export async function checkSessionCourseTutor(args: {sessionToken: string}) { //gibt die Kurs id eines Tutor aus
+    const sessionUserId = await checkSessionUser({ sessionToken: args.sessionToken });
+        if (sessionUserId != null) {
+            let sessionUserIdString = sessionUserId.toString()
+            const sessionTutorCourseId = await findTutorCourseId({tutor: sessionUserIdString});
+                if (sessionTutorCourseId != undefined) {
+                    let sessionTutorCourseIdString = sessionTutorCourseId.toString()
+                    const courseTutor = await findCourseTutor({_id: sessionTutorCourseIdString})
+                    console.log("Kurs Tutor: " + courseTutor)
+                    return courseTutor
+                } else {
+                    return null
+                }
+        } else {
+            return null
+        }
 }

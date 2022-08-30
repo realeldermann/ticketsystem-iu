@@ -1,8 +1,9 @@
 import express, { Request, Response } from 'express'
 import Ticket from '../../db/schemas/Ticket.schema'
-import { checkSessionUser, checkSessionUserCourses, checkSessionUserIsAdmin } from '../auth/checkSession'
+import { checkSessionCourseTutor, checkSessionUser, checkSessionUserCourses, checkSessionUserIsAdmin } from '../auth/checkSession'
+import { findCourseTutor, findTutorCourseId } from '../course/findCourse'
 import { deleteTicket } from './deleteTicket'
-import { findOwnCourseTicket, findOwnTicket, findTicketByCourse, findTicketById, findTicketByUser, findTicketCourseTutor, findTicketUser, findTicketUserById } from './findTicket'
+import { findOwnCourseTicket, findOwnTicket, findTicketByCourse, findTicketById, findTicketByPrio, findTicketByUser, findTicketCourseTutor, findTicketUserById } from './findTicket'
 let ErrorHandler = require('../error/ErrorHandler')
 
 const router = express.Router()
@@ -83,6 +84,29 @@ router.get('/tickets/course/find', async (req: Request, res: Response) => { //Ti
         if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
           const ticket = await findTicketByCourse(req.body.course)
           res.send(ticket)
+        } else {
+          res.sendStatus(403)
+          }
+      } catch(e) {
+          console.error(e);
+          throw new Error('Internal server error');
+        }
+    } else {
+        res.sendStatus(403)
+    } 
+})
+
+router.get('/tickets/prio', async (req: Request, res: Response) => { //Ticket nach Prio (if Tutor vom Kurs or Admin = true)
+  let sessionToken = req.headers.cookie
+    if (sessionToken != null || sessionToken != undefined) {
+      try {
+        if (((await checkSessionCourseTutor({sessionToken})?? '').toString() == (await checkSessionUser({sessionToken})?? '').toString() || ((await checkSessionUserIsAdmin({ sessionToken })) == true))) {
+          if (req.body.priority !== '') {
+            const ticket = await findTicketByPrio({sessionToken: sessionToken, priority: req.body.priority})
+            res.send(ticket)
+          } else {
+            res.sendStatus(404)
+          }
         } else {
           res.sendStatus(403)
           }
