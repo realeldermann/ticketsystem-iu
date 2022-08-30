@@ -6,7 +6,7 @@ let ErrorHandler = require('../error/ErrorHandler')
 
 const router = express.Router()
 
-router.post('/course', async (req: Request, res: Response) => { //erstellt eine neue Kategorie (if Admin = true)
+router.post('/course', async (req: Request, res: Response) => { //erstellt einen neun Kurs (if Admin = true)
     let sessionToken = req.headers.cookie
     if (sessionToken != null || sessionToken != undefined) { 
       console.log(req.body.course)
@@ -30,10 +30,9 @@ router.post('/course', async (req: Request, res: Response) => { //erstellt eine 
     }
   })
 
-  router.delete('/course', async (req: Request, res: Response) => { //löscht eine Kategorie (if Admin = true)
+  router.delete('/course', async (req: Request, res: Response) => { //löscht einen Kurs (if Admin = true)
     let sessionToken = req.headers.cookie
     if (sessionToken != null || sessionToken != undefined) { 
-      console.log(req.body.course)
       if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
        try {
             await deleteCourse(req.body)

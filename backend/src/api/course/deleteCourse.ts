@@ -3,7 +3,7 @@ import { Types } from "mongoose";
 
 export async function deleteCourse(args: { _id: string }) {
 
-            const ticket = await Course.findOneAndDelete({ _id: new Types.ObjectId(args._id) });     
+            await Course.findOneAndDelete({ _id: new Types.ObjectId(args._id) });     
         
             return true;
 }
