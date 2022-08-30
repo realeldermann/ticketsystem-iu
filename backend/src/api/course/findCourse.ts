@@ -1,6 +1,4 @@
-import Ticket from "../../db/schemas/Ticket.schema";
 import { Types } from "mongoose";
-import { checkSessionUser, checkSessionUserCourses } from "../auth/checkSession";
 import Course from "../../db/schemas/Course.schema";
 
 export async function findCourseTutor(args: { _id: string }) {
