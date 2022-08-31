@@ -11,6 +11,14 @@ export async function findOwnTicket(args: { sessionToken: string }) { //gibt all
         return ticket;
 }
 
+export async function findOwnTicketAnnotation(args: { sessionToken: string }) { //gibt alle Ticket Annotations zur Session aus (Meine Tickets)
+
+        const userId = await checkSessionUser({sessionToken: args.sessionToken})
+        const ticket = await Ticket.findOne({ user: userId });     
+        
+        return ticket?.annotation.toString();
+}
+
 export async function findTicketUser(args: { sessionToken: string }) { //gibt den User (owner) eines Tickets aus
 
         const userId = await checkSessionUser({sessionToken: args.sessionToken})
@@ -48,7 +56,6 @@ export async function findOwnCourseTicket(args: { sessionToken: string }) { //gi
 }
 
 export async function findTicketCourseTutor(args: { _id: string }) { //gibt den Tutor des Kurses eines via ID gesuchten Tickets aus
-        console.log("Kos")
         const ticketCourse = await findTicketCourseById({_id: args._id})
         if (ticketCourse != undefined){
                 const courseTutor = await findCourseTutor({_id: ticketCourse})  
@@ -80,7 +87,6 @@ export async function findTicketByCourse(args: { course: string }) { //gibt alle
 }
 
 export async function findTicketCourseById(args: { _id: string }) { //gibt den Kurs eines via ID gesuchten Tickets aus
-        console.log("bla")
         const ticket = await Ticket.findOne({ _id: new Types.ObjectId(args._id) });     
         
         return ticket?.course.toString();

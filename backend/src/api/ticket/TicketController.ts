@@ -1,11 +1,12 @@
 import express, { Request, Response } from 'express'
 import { Types } from 'mongoose'
 import Ticket from '../../db/schemas/Ticket.schema'
+import { findAnnotation } from '../annotation/findAnnotation'
 import { annotationHandler } from '../annotation/newAnnotation'
 import { checkSessionCourseTutor, checkSessionUser, checkSessionUserCourses, checkSessionUserIsAdmin } from '../auth/checkSession'
 import { findCourseTutor, findTutorCourseId } from '../course/findCourse'
 import { deleteTicket } from './deleteTicket'
-import { findOwnCourseTicket, findOwnTicket, findTicketByCourse, findTicketById, findTicketByPrio, findTicketByUser, findTicketCourseById, findTicketCourseTutor, findTicketUserById } from './findTicket'
+import { findOwnCourseTicket, findOwnTicket, findOwnTicketAnnotation, findTicketByCourse, findTicketById, findTicketByPrio, findTicketByUser, findTicketCourseById, findTicketCourseTutor, findTicketUserById } from './findTicket'
 let ErrorHandler = require('../error/ErrorHandler')
 
 const router = express.Router()
@@ -16,6 +17,27 @@ router.get('/tickets/own', async (req: Request, res: Response) => { //gibt Ticke
       try {
         const ticket = await findOwnTicket({sessionToken})
         res.send(ticket)
+      } catch(e) {
+        console.error(e);
+        throw new Error('Internal server error');
+        }
+    } else {
+        res.sendStatus(403)
+    }
+
+})
+
+router.get('/tickets/own/annotations', async (req: Request, res: Response) => { //gibt Ticket annotations zur Session aus
+  let sessionToken = req.headers.cookie
+    if (sessionToken != null || sessionToken != undefined) {
+      try {
+        const annotationId = await findOwnTicketAnnotation({sessionToken})
+        if (annotationId != null || annotationId != undefined) {
+          const annotation = await findAnnotation({_id: annotationId})
+          res.send(annotation)
+        } else {
+          res.sendStatus(404)
+        }
       } catch(e) {
         console.error(e);
         throw new Error('Internal server error');
@@ -157,8 +179,7 @@ router.post('/tickets/annotation', async (req: Request, res: Response) => { //er
     if (sessionToken != null || sessionToken != undefined) { 
       if (((await checkSessionUserCourses({sessionToken})?? '').toString() == (await findTicketCourseById(req.body._id))) || ((await checkSessionCourseTutor({sessionToken})?? '').toString() == (await findTicketCourseTutor(req.body._id)?? '').toString()) || ((await checkSessionUserIsAdmin({ sessionToken })) == true)) {
        try {
-          console.log("True")
-          Ticket.findOneAndUpdate(
+          await Ticket.findByIdAndUpdate(
             { _id: req.body._id},
               {annotation: 
                 (await annotationHandler({
