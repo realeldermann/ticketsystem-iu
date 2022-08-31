@@ -6,7 +6,7 @@ import { annotationHandler } from '../annotation/newAnnotation'
 import { checkSessionCourseTutor, checkSessionUser, checkSessionUserCourses, checkSessionUserIsAdmin } from '../auth/checkSession'
 import { findCourseTutor, findTutorCourseId } from '../course/findCourse'
 import { deleteTicket } from './deleteTicket'
-import { findOwnCourseTicket, findOwnTicket, findOwnTicketAnnotation, findTicketByCourse, findTicketById, findTicketByPrio, findTicketByUser, findTicketCourseById, findTicketCourseTutor, findTicketUserById } from './findTicket'
+import { findOwnCourseTicket, findOwnTicket, findOwnTicketAnnotation, findOwnTicketAnnotationById, findTicketByCourse, findTicketById, findTicketByPrio, findTicketByUser, findTicketCourseById, findTicketCourseTutor, findTicketUserById } from './findTicket'
 let ErrorHandler = require('../error/ErrorHandler')
 
 const router = express.Router()
@@ -27,11 +27,11 @@ router.get('/tickets/own', async (req: Request, res: Response) => { //gibt Ticke
 
 })
 
-router.get('/tickets/own/annotations', async (req: Request, res: Response) => { //gibt Ticket annotations zur Session aus
+router.get('/tickets/annotations', async (req: Request, res: Response) => { //gibt Ticket annotations nach ID aus
   let sessionToken = req.headers.cookie
     if (sessionToken != null || sessionToken != undefined) {
       try {
-        const annotationId = await findOwnTicketAnnotation({sessionToken})
+        const annotationId = await findOwnTicketAnnotationById({_id: req.body._id})
         if (annotationId != null || annotationId != undefined) {
           const annotation = await findAnnotation({_id: annotationId})
           res.send(annotation)
