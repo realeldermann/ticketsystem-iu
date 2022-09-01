@@ -53,7 +53,7 @@ router.delete('/categorie', async (req: Request, res: Response) => { //löscht e
     if (sessionToken != null || sessionToken != undefined) { 
       if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
        try {
-        await deleteCategorie(req.body)
+        await deleteCategorie(req.body._id)
         res.sendStatus(200)
       } catch(e) {
         console.error(e);

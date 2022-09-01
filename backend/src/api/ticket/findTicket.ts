@@ -79,6 +79,13 @@ export async function findTicketById(args: { _id: string }) { //gibt ein via ID 
         return ticket;
 }
 
+export async function findTicketTypeById(args: { _id: string }) { //gibt eine Art für ein via ID gesuchtes Ticket aus
+
+        const ticket = await Ticket.findOne({ _id: new Types.ObjectId(args._id) });     
+        
+        return ticket?.type;
+}
+
 export async function findTicketByUser(args: { user: string }) { //gibt alle Tickets eines via ID gesuchten Users aus
 
         const ticket = await Ticket.find({ user: args.user });     

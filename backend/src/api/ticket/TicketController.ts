@@ -158,6 +158,7 @@ router.post('/tickets', async (req: Request, res: Response) => { //erstellt ein 
           categorie: req.body.categorie,
           course: req.body.course,
           annotation: null,
+          type: req.body.type,
           user: await checkSessionUser({sessionToken})
         })
         await ticket.save()
@@ -205,7 +206,7 @@ router.delete('/tickets', async (req: Request, res: Response) => { //löscht ein
     if (sessionToken != null || sessionToken != undefined) { 
       if ((await checkSessionUser({sessionToken})?? '').toString() == (await findTicketUserById(req.body)?? '').toString() || (await checkSessionUser({sessionToken})?? '').toString() == (await findTicketCourseTutor(req.body)?? '').toString() || (await checkSessionUserIsAdmin({ sessionToken })) == true) {
        try {
-          await deleteTicket(req.body)
+          await deleteTicket(req.body._id)
           res.sendStatus(200)
       } catch(e) {
         console.error(e);

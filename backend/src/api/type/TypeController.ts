@@ -1,22 +1,21 @@
 import express, { Request, Response } from 'express'
-import Course from '../../db/schemas/Course.schema';
+import Type from '../../db/schemas/Type.schema';
 import { checkSessionUserIsAdmin } from '../auth/checkSession';
-import { deleteCourse } from './deleteCourse';
+import { deleteType } from './deleteType';
 let ErrorHandler = require('../error/ErrorHandler')
 
 const router = express.Router()
 
-router.post('/course', async (req: Request, res: Response) => { //erstellt einen neun Kurs (if Admin = true)
+router.post('/type', async (req: Request, res: Response) => { //erstellt eine neue Art (if Admin = true)
     let sessionToken = req.headers.cookie
         if (sessionToken != null || sessionToken != undefined) { 
-            console.log(req.body.course)
+            console.log(req.body.type)
             if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
                 try {
-                    const course = new Course({
-                    name: req.body.name,
-                    tutor: req.body.tutor
+                    const type = new Type({
+                    name: req.body.name
                     })
-                    await course.save()
+                    await type.save()
                     res.sendStatus(200)
                 } catch(e) {
                     console.error(e);
@@ -30,12 +29,12 @@ router.post('/course', async (req: Request, res: Response) => { //erstellt einen
         }
 })
 
-router.delete('/course', async (req: Request, res: Response) => { //löscht einen Kurs (if Admin = true)
+router.delete('/type', async (req: Request, res: Response) => { //löscht eine Art via ID(if Admin = true)
     let sessionToken = req.headers.cookie
         if (sessionToken != null || sessionToken != undefined) { 
             if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
                 try {
-                    await deleteCourse(req.body._id)
+                    await deleteType(req.body._id)
                     res.sendStatus(200)
                 } catch(e) {
                     console.error(e);
