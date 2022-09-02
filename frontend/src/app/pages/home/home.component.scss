@@ -6,6 +6,33 @@
     border-radius: 10px 10px 10px 10px;
 }
 
+.sidebuttons {
+    color: #f1f1f6;
+    text-align: left;
+    width: 16.5vw;
+    height: 5vh;
+    border: 1px #f1f1f6;
+    border-style: solid;
+    padding-top: 2vh;
+    line-height: 3vh;
+}
+
+#topsidebutton {
+    margin-top: 5vh;
+}
+
+#leftside {
+    width: 10vh;
+    float: left;
+}
+
+#xbutton {
+    background-color: lightgray;
+    height: 6vh;
+    width: 6vh;
+    text-align: center;
+}
+
 #black {
     background-color: #000!important;
     height: 130vh;
