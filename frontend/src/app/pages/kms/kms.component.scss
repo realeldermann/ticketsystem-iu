@@ -1,0 +1,145 @@
+#grey {
+    background-color: #f1f1f6;
+    height: 110vh;
+    margin-top: 3vh;
+    margin-left: 31vh;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.sidebuttons {
+    color: #f1f1f6;
+    text-align: left;
+    width: 100%;
+    height: 5vh;
+    padding-top: 2vh;
+    line-height: 3vh;
+
+    .sidebuttontext {
+        font-size: 0.8em;
+        hyphens: auto;
+        -moz-hyphens: auto;
+        -o-hyphens: auto;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+    }
+
+}
+
+a {
+    text-decoration: none;
+}
+
+.sidebuttonicon {
+    float: left;
+    padding-right: 1vw;
+    padding-left: 1vw;
+    height: 4vh;
+    width: 10%;
+    i {
+        font-size: 1.3333333333em;
+    }
+}
+
+#topsidebutton {
+    margin-top: 5vh;
+    margin-left: 5px;
+    div {
+        padding-right: 0.9vh!important;
+    }
+}
+
+#leftside {
+    width: 17%;
+    float: left;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+
+#xbutton {
+    background-color: lightgray;
+    height: 6vh;
+    width: 6vh;
+    text-align: center;
+}
+
+#black {
+    background-color: #000!important;
+    height: 130vh;
+    
+}
+
+#whitehead {
+    background-color: white;
+    margin: 2.5vh;
+    margin-right: 2vh;
+    border-radius: 10px;
+    font-family: "SourceSansPro-Bold",sans-serif;
+    width: auto;
+    height: 14vh;
+
+    #whiteheadtext {
+        float: left;
+        h2 {
+            padding: 3vh;
+        }
+    }
+
+    #pic {
+        height: 100%;
+        float: right;
+        padding-right: 4vw;
+        margin: 1vh;
+        img {
+            width: 17vh;
+        }
+    }
+}
+
+#body {
+   
+ 
+    float: left;
+
+    #whitebody {
+        background-color: white;
+        height: 65vh;
+        border-radius: 10px;
+        margin: 2.5vh;
+        margin-top: 0.5vh;
+        margin-right: 0vw;
+        float: left;
+        width: 80.5vw;
+    }
+    table {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        padding: 5px;
+        th {
+            background-color: #4472c4;
+        }
+        tr:nth-child(even) {
+            background-color: #cfd5ea;
+        }
+        tr:nth-child(odd) {
+            background-color: #e9ebf5;
+        }
+    }
+}
+
+#kms_button_text {
+    float: left;
+}
+
+#kms_icon {
+    width: 100%;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+}
+
+#neuerantrag {
+    background-color: #4472c4;
+    width: 10%;
+    height: 10%;
+}
+
