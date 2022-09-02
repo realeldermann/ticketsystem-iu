@@ -1,14 +1,15 @@
 #grey {
     background-color: #f1f1f6;
-    height: 96vh;
+    height: 110vh;
     margin-top: 3vh;
     margin-left: 37vh;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 10px 10px 10px 10px;
 }
 
 #black {
     background-color: #000!important;
-    height: 100vh;
+    height: 130vh;
+    
 }
 
 #whitehead {
@@ -31,42 +32,46 @@
 
 #body {
    
-    display: flex;
-    flex-direction: column;
+ 
+    float: left;
+
+    #whitebody {
+        background-color: white;
+        height: 65vh;
+        border-radius: 10px;
+        margin: 2.5vh;
+        margin-right: 0vw;
+        float: left;
+        width: 65vw;
+    }
 
     #side {
-        
-
-        #whitebody {
-            background-color: white;
-            height: 65vh;
-            border-radius: 10px;
-            margin: 2.5vh;
-            margin-right: 15vw;
-        }
+    
+        width: 10vw;
+        float: right;
         
         #whitefristright {
             background-color: white;
-            height: 10vh;
-            width: 11vw;
+            height: 25vh;
+            width: 14.5vw;
             border-radius: 10px;
             margin: 2.5vh;
         }
         
         #whitesecright {
             background-color: white;
-            height: 10vh;
+            height: 25vh;
             border-radius: 10px;
             margin: 2.5vh;
-            width: 11vw;
+            width: 14.5vw;
         }
         
         #whitethirdright {
             background-color: white;
-            height: 10vh;
+            height: 25vh;
             border-radius: 10px;
             margin: 2.5vh;
-            width: 11vw;
+            width: 14.5vw;
         }
     }
 }
