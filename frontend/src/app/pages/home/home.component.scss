@@ -2,28 +2,53 @@
     background-color: #f1f1f6;
     height: 110vh;
     margin-top: 3vh;
-    margin-left: 37vh;
+    margin-left: 31vh;
     border-radius: 10px 10px 10px 10px;
 }
 
 .sidebuttons {
     color: #f1f1f6;
     text-align: left;
-    width: 16.5vw;
+    width: 100%;
     height: 5vh;
-    border: 1px #f1f1f6;
-    border-style: solid;
     padding-top: 2vh;
     line-height: 3vh;
+
+    .sidebuttontext {
+        font-size: 0.8em;
+        hyphens: auto;
+        -moz-hyphens: auto;
+        -o-hyphens: auto;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+    }
+
+}
+
+a {
+    text-decoration: none;
+}
+
+.sidebuttonicon {
+    float: left;
+    padding-right: 1vw;
+    padding-left: 1vw;
+    height: 4vh;
+    width: 10%;
+    i {
+        font-size: 1.3333333333em;
+    }
 }
 
 #topsidebutton {
     margin-top: 5vh;
+    margin-left: 5px;
 }
 
 #leftside {
-    width: 10vh;
+    width: 17%;
     float: left;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 }
 
 #xbutton {
@@ -41,19 +66,28 @@
 
 #whitehead {
     background-color: white;
-    display: flex;
     margin: 2.5vh;
+    margin-right: 2vh;
     border-radius: 10px;
     font-family: "SourceSansPro-Bold",sans-serif;
+    width: auto;
+    height: 14vh;
 
-    h2 {
-        padding: 3vh;
+    #whiteheadtext {
+        float: left;
+        h2 {
+            padding: 3vh;
+        }
     }
 
     #pic {
-        width: 10vh;
-        height: 10vh;
-        margin-left: 100vh;
+        height: 100%;
+        float: right;
+        padding-right: 4vw;
+        margin: 1vh;
+        img {
+            width: 17vh;
+        }
     }
 }
 
@@ -67,6 +101,7 @@
         height: 65vh;
         border-radius: 10px;
         margin: 2.5vh;
+        margin-top: 0.5vh;
         margin-right: 0vw;
         float: left;
         width: 65vw;
@@ -80,9 +115,11 @@
         #whitefristright {
             background-color: white;
             height: 25vh;
-            width: 14.5vw;
+            width: 14.1vw;
             border-radius: 10px;
             margin: 2.5vh;
+            margin-right: 2vh;
+            margin-top: 0.5vh;
         }
         
         #whitesecright {
@@ -90,7 +127,8 @@
             height: 25vh;
             border-radius: 10px;
             margin: 2.5vh;
-            width: 14.5vw;
+            margin-right: 2vh;
+            width: 14.1vw;
         }
         
         #whitethirdright {
@@ -98,8 +136,20 @@
             height: 25vh;
             border-radius: 10px;
             margin: 2.5vh;
-            width: 14.5vw;
+            margin-right: 2vh;
+            width: 14.1vw;
         }
     }
+}
+
+#kms_button_text {
+    float: left;
+}
+
+#kms_icon {
+    width: 100%;
+    float: left;
+    margin: 0px;
+    padding: 0px;
 }
 
