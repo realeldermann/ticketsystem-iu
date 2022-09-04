@@ -31,7 +31,7 @@ router.post('/course', async (req: Request, res: Response) => { //erstellt einen
 })
 
 router.delete('/course', async (req: Request, res: Response) => { //löscht einen Kurs (if Admin = true)
-    let sessionToken = req.headers.cookie
+    let sessionToken = req.cookies.sessionToken
         if (sessionToken != null || sessionToken != undefined) { 
             if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
                 try {

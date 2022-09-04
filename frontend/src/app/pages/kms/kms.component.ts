@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TicketsService } from 'src/app/services/tickets.service';
 
 @Component({
   selector: 'app-kms',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KmsComponent implements OnInit {
 
-  constructor() { }
+  allOwnCourseTickets: any = []
+  constructor(private service: TicketsService) { }
 
   ngOnInit(): void {
+    this.ownCourseTickets()
   }
 
+  ownCourseTickets(): void {
+    this.service
+        .getOwnTickets()
+        .subscribe((response: any) => {
+          this.allOwnCourseTickets = response;
+          console.log(response)
+        });
+  }
 }

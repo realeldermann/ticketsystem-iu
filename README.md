@@ -14,9 +14,9 @@ Ticketsystem zum Software Engineering Projekt an der IU
 # ToDo
 ## Frontend
 - [x] Angular aufsetzen
-- [ ] Struktur aufbauen
-- [ ] Schlichtes Design
-- [ ] Reale Daten abrufen
+- [x] Struktur aufbauen
+- [x] Schlichtes Design
+- [x] Reale Daten abrufen
 - [ ] Reale Daten Speichern
 - [ ] Mobile und Desktop Optimieren
 - [ ] Aufräumen
@@ -31,10 +31,10 @@ Ticketsystem zum Software Engineering Projekt an der IU
 - [x] Tests mit einfachen eintragungen
 - [x] Login via Session Cookie
 - [x] User / Userrollen einfügen
-- [ ] Tickets komplett
-- [ ] Kategorien komplett
-- [ ] Kurse komplett
+- [x] Tickets komplett
+- [x] Kategorien komplett
+- [x] Kurse komplett
 - [ ] Priorisierungen komplett
-- [ ] Alle Berechtigungen über Session komplett
+- [x] Alle Berechtigungen über Session komplett
 - [ ] IT-Sicherheit geprüft
 - [ ] Unit Tests

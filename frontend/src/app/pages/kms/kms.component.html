@@ -94,27 +94,28 @@
         <div id="body">
             <div id="whitebody">
                 <table>
-                    <tr>
-                        <th>ID</th><th>Benennung</th><th>Kategorie</th><th>Art</th><th>Priorität</th><th>Status</th><th>Vorschlag öffnen</th>
-                    </tr>
-                    <tr>
-                        <td>01</td><td>Test</td><td>Skript</td><td>Fehlermeldung</td><td>Hoch</td><td>Eingebracht</td><td>X</td>
-                    </tr>
-                    <tr>
-                        <td>02</td><td>Test2</td><td>Skript</td><td>Fehlermeldung</td><td>Hoch</td><td>Eingebracht</td><td>X</td>
-                    </tr>
-                    <tr>
-                        <td>03</td><td>Test3</td><td>Skript</td><td>Fehlermeldung</td><td>Hoch</td><td>Eingebracht</td><td>X</td>
-                    </tr>
-                    <tr>
-                        <td>04</td><td>Test4</td><td>Skript</td><td>Fehlermeldung</td><td>Hoch</td><td>Eingebracht</td><td>X</td>
-                    </tr>
-                    <tr>
-                        <td>05</td><td>Test5</td><td>Skript</td><td>Fehlermeldung</td><td>Hoch</td><td>Eingebracht</td><td>X</td>
-                    </tr>
-                    <tr>
-                        <td>06</td><td>Test6</td><td>Skript</td><td>Fehlermeldung</td><td>Hoch</td><td>Eingebracht</td><td>X</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <!-- <th>ID</th> -->
+                            <th>Benennung</th>
+                            <th>Kategorie</th>
+                            <th>Art</th>
+                            <th>Priorität</th>
+                            <th>Status</th>
+                            <th>Vorschlag öffnen</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let tickets of allOwnCourseTickets">
+                                 <!-- <td>{{ tickets._id }}</td> -->
+                                <td>{{ tickets.title }}</td>
+                                <td>{{ tickets.categorie.name }}</td>
+                                <td>{{ tickets.type.name }}</td>
+                                <td>{{ tickets.priority }}</td>
+                                <td>{{ tickets.status }}</td>
+                                <td>X</td>
+                            </tr>
+                            </tbody>
                 </table>
             
             </div>

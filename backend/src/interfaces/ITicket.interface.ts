@@ -14,7 +14,7 @@ export interface ITicket {
     text: string,
     categorie: Types.ObjectId | ICategorie,
     course: Types.ObjectId | ICourse,
-    user: Types.ObjectId | IUser
-    annotation: Types.ObjectId | IAnnotation
+    user: Types.ObjectId | IUser,
+    annotation: Types.ObjectId | IAnnotation,
     type: Types.ObjectId | IType
 }

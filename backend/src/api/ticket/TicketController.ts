@@ -5,14 +5,16 @@ import { findAnnotation } from '../annotation/findAnnotation'
 import { annotationHandler } from '../annotation/newAnnotation'
 import { checkSessionCourseTutor, checkSessionUser, checkSessionUserCourses, checkSessionUserIsAdmin } from '../auth/checkSession'
 import { findCourseTutor, findTutorCourseId } from '../course/findCourse'
+import { findTypeById } from '../type/findType'
 import { deleteTicket } from './deleteTicket'
-import { findOwnCourseTicket, findOwnTicket, findOwnTicketAnnotation, findOwnTicketAnnotationById, findTicketByCourse, findTicketById, findTicketByPrio, findTicketByUser, findTicketCourseById, findTicketCourseTutor, findTicketUserById } from './findTicket'
+import { findOwnCourseTicket, findOwnTicket, findOwnTicketAnnotation, findOwnTicketAnnotationById, findTicketByCourse, findTicketById, findTicketByPrio, findTicketByUser, findTicketCourseById, findTicketCourseTutor, findTicketTypeById, findTicketUserById } from './findTicket'
 let ErrorHandler = require('../error/ErrorHandler')
 
 const router = express.Router()
 
 router.get('/tickets/own', async (req: Request, res: Response) => { //gibt Tickets zur Session aus
-  let sessionToken = req.headers.cookie
+  let sessionToken = req.cookies.sessionToken
+  console.log(req.cookies.sessionToken)
     if (sessionToken != null || sessionToken != undefined) {
       try {
         const ticket = await findOwnTicket({sessionToken})
@@ -28,7 +30,7 @@ router.get('/tickets/own', async (req: Request, res: Response) => { //gibt Ticke
 })
 
 router.get('/tickets/annotations', async (req: Request, res: Response) => { //gibt Ticket annotations nach ID aus
-  let sessionToken = req.headers.cookie
+  let sessionToken = req.cookies.sessionToken
     if (sessionToken != null || sessionToken != undefined) {
       try {
         const annotationId = await findOwnTicketAnnotationById({_id: req.body._id})
@@ -49,7 +51,7 @@ router.get('/tickets/annotations', async (req: Request, res: Response) => { //gi
 })
 
 router.get('/tickets/own/course', async (req: Request, res: Response) => { //gibt Tickets des Kurses der Session aus
-  let sessionToken = req.headers.cookie
+  let sessionToken = req.cookies.sessionToken
     if (sessionToken != null || sessionToken != undefined) {
       try {
         const ticket = await findOwnCourseTicket({sessionToken})
@@ -64,10 +66,10 @@ router.get('/tickets/own/course', async (req: Request, res: Response) => { //gib
 })
 
 router.get('/tickets/id/find', async (req: Request, res: Response) => { //Ticket suche nach Ticket ID (if Admin = true)
-  let sessionToken = req.headers.cookie
+  let sessionToken = req.cookies.sessionToken
     if (sessionToken != null || sessionToken != undefined) {
       try {
-        if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
+        if (await checkSessionUserIsAdmin({ sessionToken })) {
           const ticket = await findTicketById(req.body)
           res.send(ticket)
         } else {
@@ -83,10 +85,10 @@ router.get('/tickets/id/find', async (req: Request, res: Response) => { //Ticket
 })
 
 router.get('/tickets/user/find', async (req: Request, res: Response) => { //Ticket suche nach User (if Admin = true)
-  let sessionToken = req.headers.cookie
+  let sessionToken = req.cookies.sessionToken
     if (sessionToken != null || sessionToken != undefined) {
       try {
-        if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
+        if (await checkSessionUserIsAdmin({ sessionToken })) {
           const ticket = await findTicketByUser(req.body)
           res.send(ticket)
         } else {
@@ -102,7 +104,7 @@ router.get('/tickets/user/find', async (req: Request, res: Response) => { //Tick
 })
 
 router.get('/tickets/course/find', async (req: Request, res: Response) => { //Ticket suche nach Kurs (if Admin = true)
-  let sessionToken = req.headers.cookie
+  let sessionToken = req.cookies.sessionToken
     if (sessionToken != null || sessionToken != undefined) {
       try {
         if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
@@ -121,7 +123,7 @@ router.get('/tickets/course/find', async (req: Request, res: Response) => { //Ti
 })
 
 router.get('/tickets/prio', async (req: Request, res: Response) => { //Ticket nach Prio (if Tutor vom Kurs or Admin = true)
-  let sessionToken = req.headers.cookie
+  let sessionToken = req.cookies.sessionToken
     if (sessionToken != null || sessionToken != undefined) {
       try {
         if (((await checkSessionCourseTutor({sessionToken})?? '').toString() == (await checkSessionUser({sessionToken})?? '').toString() || ((await checkSessionUserIsAdmin({ sessionToken })) == true))) {
@@ -143,8 +145,32 @@ router.get('/tickets/prio', async (req: Request, res: Response) => { //Ticket na
     } 
 })
 
+router.get('/tickets/type', async (req: Request, res: Response) => { //Ticket Type via ID
+  let sessionToken = req.cookies.sessionToken
+    if (sessionToken != null || sessionToken != undefined) {
+      try {
+        if (((await checkSessionCourseTutor({sessionToken})?? '').toString() == (await checkSessionUser({sessionToken})?? '').toString() || ((await checkSessionUserCourses({sessionToken})?? '').toString() == (await findTicketCourseById({_id: req.body._id})?? '').toString()) || ((await checkSessionUserIsAdmin({ sessionToken })) == true))) {
+          if (req.body._id !== '') {
+            const typeId = (await findTicketTypeById({_id: req.body._id})?? '').toString()
+            const type = await findTypeById({_id: typeId})
+            res.send(type)
+          } else {
+            res.sendStatus(404)
+          }
+        } else {
+          res.sendStatus(403)
+          }
+      } catch(e) {
+          console.error(e);
+          throw new Error('Internal server error');
+        }
+    } else {
+        res.sendStatus(403)
+    } 
+})
+
 router.post('/tickets', async (req: Request, res: Response) => { //erstellt ein neues Ticket if course = user course oder if Admin = true
-  let sessionToken = req.headers.cookie
+  let sessionToken = req.cookies.sessionToken
     if (sessionToken != null || sessionToken != undefined) { 
       console.log(req.body.course)
       if ((await checkSessionUserCourses({sessionToken})?? '').toString() == req.body.course || (await checkSessionUserIsAdmin({ sessionToken })) == true) {
@@ -176,7 +202,7 @@ router.post('/tickets', async (req: Request, res: Response) => { //erstellt ein 
 })
 
 router.post('/tickets/annotation', async (req: Request, res: Response) => { //erstellt eine neue Ticket anmerkung / Kommentar if course = user course oder if Admin = true
-  let sessionToken = req.headers.cookie
+  let sessionToken = req.cookies.sessionToken
     if (sessionToken != null || sessionToken != undefined) { 
       if (((await checkSessionUserCourses({sessionToken})?? '').toString() == (await findTicketCourseById(req.body._id))) || ((await checkSessionCourseTutor({sessionToken})?? '').toString() == (await findTicketCourseTutor(req.body._id)?? '').toString()) || ((await checkSessionUserIsAdmin({ sessionToken })) == true)) {
        try {
@@ -202,7 +228,7 @@ router.post('/tickets/annotation', async (req: Request, res: Response) => { //er
 })
 
 router.delete('/tickets', async (req: Request, res: Response) => { //löscht ein Ticket nach abfrage der Berechtigung (if TicketOwner, Tutor des Ticket Kurses oder if Admin = true)
-  let sessionToken = req.headers.cookie
+  let sessionToken = req.cookies.sessionToken
     if (sessionToken != null || sessionToken != undefined) { 
       if ((await checkSessionUser({sessionToken})?? '').toString() == (await findTicketUserById(req.body)?? '').toString() || (await checkSessionUser({sessionToken})?? '').toString() == (await findTicketCourseTutor(req.body)?? '').toString() || (await checkSessionUserIsAdmin({ sessionToken })) == true) {
        try {

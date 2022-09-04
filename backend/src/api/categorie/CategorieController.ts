@@ -49,7 +49,7 @@ router.get('/categorie', async (req: Request, res: Response) => { //gibt alle Ka
 })
 
 router.delete('/categorie', async (req: Request, res: Response) => { //löscht eine Kategorie (if Admin = true)
-  let sessionToken = req.headers.cookie
+  let sessionToken = req.cookies.sessionToken
     if (sessionToken != null || sessionToken != undefined) { 
       if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
        try {

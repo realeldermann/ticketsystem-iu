@@ -1,7 +1,17 @@
 <main>
 <div id="body">
 <h1>MyCampus - Korrektursystem</h1>
-
+    <p>
+        <label>E-Mail:</label>
+        <input type="text" [(ngModel)]="email" required>
+    </p>
+    <p>
+        <label>Password:</label>
+        <input type="password" [(ngModel)]="password" required>
+    </p>
+    <p>
+        <button type="submit" (click)="login()">Submit</button>
+    </p>
 </div>
 <div id="footer">
 Test
