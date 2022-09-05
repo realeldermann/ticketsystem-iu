@@ -8,7 +8,7 @@ let ErrorHandler = require('../error/ErrorHandler')
 const router = express.Router()
 
 router.post('/categorie', async (req: Request, res: Response) => { //erstellt eine neue Kategorie (if Admin = true)
-  let sessionToken = req.headers.cookie
+  let sessionToken = req.cookies.sessionToken
     if (sessionToken != null || sessionToken != undefined) { 
       if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
        try {
@@ -30,7 +30,7 @@ router.post('/categorie', async (req: Request, res: Response) => { //erstellt ei
 })
 
 router.get('/categorie', async (req: Request, res: Response) => { //gibt alle Kategorien aus
-  let sessionToken = req.headers.cookie
+  let sessionToken = req.cookies.sessionToken
     if (sessionToken != null || sessionToken != undefined) {
       if (await checkSessionUser({sessionToken}) != undefined) {
         try {

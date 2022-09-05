@@ -7,6 +7,8 @@ let CourseController = require("./course/CourseController")
 let CategorieController = require("./categorie/CategorieController")
 let AnnotationController = require("./annotation/AnnotationController")
 let TypeController = require("./type/TypeController")
+let PriorityController = require("./priority/PriorityController")
+let StatusController = require("./status/StatusController")
 let ErrorHandler = require("./error/ErrorHandler")
 import cookieParser from 'cookie-parser'
 
@@ -45,5 +47,6 @@ app.use(TicketController)
 app.use(UserController)
 app.use(AnnotationController)
 app.use(TypeController)
-
+app.use(PriorityController)
+app.use(StatusController)
 }

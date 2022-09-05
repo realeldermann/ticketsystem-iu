@@ -57,7 +57,7 @@ export async function findTicketByPrio(args: { sessionToken: string, priority: n
 export async function findOwnCourseTicket(args: { sessionToken: string }) { //gibt alle Tickets des Kurses eines Users aus (Tickets meines Kurses)
 
         const userCourse = await checkSessionUserCourses({sessionToken: args.sessionToken})
-        const ticket = (await Ticket.find({ course: userCourse }).populate('type').populate('categorie'));     
+        const ticket = (await Ticket.find({ course: userCourse }).populate('type').populate('categorie').populate('status').populate('priority'));     
         
         return ticket;
 }

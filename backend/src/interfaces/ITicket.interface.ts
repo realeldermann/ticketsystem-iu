@@ -4,13 +4,15 @@ import { ICourse } from "./ICourse.interface";
 import { ICategorie } from "./ICategorie.interface";
 import { IAnnotation } from "./IAnnotation.interface";
 import { IType } from "./IType.interface";
+import { IPriority } from "./IPriority.interface";
+import { IStatus } from "./IStatus.interface";
 
 export interface ITicket {
     _id?: Types.ObjectId,
     title: string,
     created: Date,
-    status: number,
-    priority: number,
+    status: Types.ObjectId | IStatus,
+    priority: Types.ObjectId | IPriority,
     text: string,
     categorie: Types.ObjectId | ICategorie,
     course: Types.ObjectId | ICourse,

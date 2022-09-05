@@ -1,21 +1,20 @@
 import express, { Request, Response } from 'express'
-import Type from '../../db/schemas/Type.schema';
+import Status from '../../db/schemas/Status.schema';
 import { checkSessionUserIsAdmin } from '../auth/checkSession';
-import { deleteType } from './deleteType';
+import { deleteStatus } from './deleteStatus';
 let ErrorHandler = require('../error/ErrorHandler')
 
 const router = express.Router()
 
-router.post('/type', async (req: Request, res: Response) => { //erstellt eine neue Art (if Admin = true)
+router.post('/status', async (req: Request, res: Response) => { //erstellt einen neuen Status (if Admin = true)
     let sessionToken = req.cookies.sessionToken
         if (sessionToken != null || sessionToken != undefined) { 
-            console.log(req.body.type)
-            if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
+            if (await checkSessionUserIsAdmin({ sessionToken })) {
                 try {
-                    const type = new Type({
+                    const course = new Status({
                     name: req.body.name
                     })
-                    await type.save()
+                    await course.save()
                     res.sendStatus(200)
                 } catch(e) {
                     console.error(e);
@@ -29,12 +28,12 @@ router.post('/type', async (req: Request, res: Response) => { //erstellt eine ne
         }
 })
 
-router.delete('/type', async (req: Request, res: Response) => { //löscht eine Art via ID(if Admin = true)
+router.delete('/status', async (req: Request, res: Response) => { //löscht einen Status (if Admin = true)
     let sessionToken = req.cookies.sessionToken
         if (sessionToken != null || sessionToken != undefined) { 
-            if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
+            if (await checkSessionUserIsAdmin({ sessionToken })) {
                 try {
-                    await deleteType(req.body._id)
+                    await deleteStatus(req.body._id)
                     res.sendStatus(200)
                 } catch(e) {
                     console.error(e);

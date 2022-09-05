@@ -7,7 +7,7 @@ let ErrorHandler = require('../error/ErrorHandler')
 const router = express.Router()
 
 router.post('/course', async (req: Request, res: Response) => { //erstellt einen neun Kurs (if Admin = true)
-    let sessionToken = req.headers.cookie
+    let sessionToken = req.cookies.sessionToken
         if (sessionToken != null || sessionToken != undefined) { 
             console.log(req.body.course)
             if ((await checkSessionUserIsAdmin({ sessionToken })) == true) {
