@@ -6,6 +6,10 @@
 **/build
 */build
 
+#npm
+*/package-lock.json
+**/package-lock.json
+
 # Logs
 logs
 *.log
