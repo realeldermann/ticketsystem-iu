@@ -36,5 +36,6 @@ Ticketsystem zum Software Engineering Projekt an der IU
 - [x] Kurse komplett
 - [x] Priorisierungen komplett
 - [x] Alle Berechtigungen über Session komplett
+- [x] Logout hinzugefügt
 - [ ] IT-Sicherheit geprüft
 - [ ] Unit Tests
