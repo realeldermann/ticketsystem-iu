@@ -1,4 +1,3 @@
-import { ISession } from "../../interfaces/ISession.interface";
 import Session from "../../db/schemas/Session.schema";
 import User from "../../db/schemas/User.schema";
 import { Types } from "mongoose";

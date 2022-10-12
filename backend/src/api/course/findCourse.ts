@@ -1,6 +1,5 @@
 import { Types } from "mongoose";
 import Course from "../../db/schemas/Course.schema";
-import { checkSessionUser } from "../auth/checkSession";
 
 export async function findCourseTutor(args: { _id: string }) { //gibt den Tutor eines Kurses via ID aus
     const course = await Course.findOne({ _id: new Types.ObjectId(args._id) });     

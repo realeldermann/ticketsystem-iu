@@ -1,13 +1,11 @@
 import express, { Request, Response } from 'express'
-import { Types } from 'mongoose'
 import Ticket from '../../db/schemas/Ticket.schema'
 import { findAnnotation } from '../annotation/findAnnotation'
 import { annotationHandler } from '../annotation/newAnnotation'
 import { checkSessionCourseTutor, checkSessionUser, checkSessionUserCourses, checkSessionUserIsAdmin } from '../auth/checkSession'
-import { findCourseTutor, findTutorCourseId } from '../course/findCourse'
 import { findTypeById } from '../type/findType'
 import { deleteTicket } from './deleteTicket'
-import { findOwnCourseTicket, findOwnTicket, findOwnTicketAnnotation, findOwnTicketAnnotationById, findTicketByCourse, findTicketById, findTicketByPrio, findTicketByUser, findTicketCourseById, findTicketCourseTutor, findTicketTypeById, findTicketUserById } from './findTicket'
+import { findOwnCourseTicket, findOwnTicket, findOwnTicketAnnotationById, findTicketByCourse, findTicketById, findTicketByPrio, findTicketByUser, findTicketCourseById, findTicketCourseTutor, findTicketTypeById, findTicketUserById } from './findTicket'
 let ErrorHandler = require('../error/ErrorHandler')
 
 const router = express.Router()

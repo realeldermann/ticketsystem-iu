@@ -1,5 +1,4 @@
 import User from "../../db/schemas/User.schema";
-import express, { Request, Response } from 'express'
 //import { pubsub } from "../api";
 import { generateRandomString, generateSalt, hashPassword } from "./cryptoUtils";
 

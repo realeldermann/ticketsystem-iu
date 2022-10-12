@@ -1,5 +1,4 @@
 import Session from "../../db/schemas/Session.schema";
-import { Types } from "mongoose";
 
 export async function deleteSession(args: {sessionToken: string}) { //löscht eine Session
     let sessionTokenString = args.sessionToken.toString()
