@@ -5,6 +5,7 @@
 # Build
 **/build
 */build
+*dbconnector-prod-save.ts
 
 #npm
 */package-lock.json
