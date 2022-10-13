@@ -6,6 +6,7 @@ import { checkSessionCourseTutor, checkSessionUser, checkSessionUserCourses, che
 import { findTypeById } from '../type/findType'
 import { deleteTicket } from './deleteTicket'
 import { findOwnCourseTicket, findOwnTicket, findOwnTicketAnnotationById, findTicketByCourse, findTicketById, findTicketByPrio, findTicketByUser, findTicketCourseById, findTicketCourseTutor, findTicketTypeById, findTicketUserById } from './findTicket'
+import { updateTicketAnnotation, updateTicketCategorie, updateTicketCourse, updateTicketOwner, updateTicketPriority, updateTicketStatus, updateTicketText, updateTicketTitle } from './updateTicket'
 let ErrorHandler = require('../error/ErrorHandler')
 
 const router = express.Router()
@@ -242,7 +243,88 @@ router.delete('/tickets', async (req: Request, res: Response) => { //löscht ein
     } else {
       res.sendStatus(403)
     }
-  })
+})
+
+router.post('/tickets/update/title', async (req: Request, res: Response) => { //ändert den Titel eines Tickets by ID
+  try {
+    await updateTicketTitle(req.body)
+    res.sendStatus(200)
+  } catch(e) {
+    console.error(e);
+    throw new Error('Internal server error');
+  }
+})
+
+router.post('/tickets/update/text', async (req: Request, res: Response) => {//ändert den Text eines Tickets by ID
+  try {
+    await updateTicketText(req.body)
+    res.sendStatus(200)
+  } catch(e) {
+    console.error(e);
+    throw new Error('Internal server error');
+  }
+})
+
+router.post('/tickets/update/course', async (req: Request, res: Response) => {//ändert den Course eines Tickets by ID
+  try {
+    await updateTicketCourse(req.body)
+    res.sendStatus(200)
+  } catch(e) {
+    console.error(e);
+    throw new Error('Internal server error');
+  }
+})
+
+router.post('/tickets/update/categorie', async (req: Request, res: Response) => {//ändert die Categorie eines Tickets by ID
+  try {
+    await updateTicketCategorie(req.body)
+    res.sendStatus(200)
+  } catch(e) {
+    console.error(e);
+    throw new Error('Internal server error');
+  }
+})
+
+router.post('/tickets/update/priority', async (req: Request, res: Response) => {//ändert die Priorität eines Tickets by ID
+  try {
+    await updateTicketPriority(req.body)
+    res.sendStatus(200)
+  } catch(e) {
+    console.error(e);
+    throw new Error('Internal server error');
+  }
+})
+
+router.post('/tickets/update/status', async (req: Request, res: Response) => {//ändert den Status eines Tickets by ID
+  try {
+    await updateTicketStatus(req.body)
+    res.sendStatus(200)
+  } catch(e) {
+    console.error(e);
+    throw new Error('Internal server error');
+  }
+})
+
+router.post('/tickets/update/owner', async (req: Request, res: Response) => {//ändert Besitzer eines Tickets by ID
+  try {
+    await updateTicketOwner(req.body)
+    res.sendStatus(200)
+  } catch(e) {
+    console.error(e);
+    throw new Error('Internal server error');
+  }
+})
+
+router.post('/tickets/update/annotation', async (req: Request, res: Response) => {//ändert die Annotation eines Tickets by ID
+  try {
+    await updateTicketAnnotation(req.body)
+    res.sendStatus(200)
+  } catch(e) {
+    console.error(e);
+    throw new Error('Internal server error');
+  }
+})
+
 
 //router.get('/test', async (req: Request, res: Response) => { //Test
 // const test = await findTicketByCourse(req.body.course)
