@@ -1,19 +1,80 @@
-<main>
-<div id="body">
-<h1>MyCampus - Korrektursystem</h1>
-    <p>
-        <label>E-Mail:</label>
-        <input type="text" [(ngModel)]="email" required>
-    </p>
-    <p>
-        <label>Password:</label>
-        <input type="password" [(ngModel)]="password" required>
-    </p>
-    <p>
-        <button type="submit" (click)="login()">Submit</button>
-    </p>
-</div>
-<div id="footer">
-Test
-</div>
-</main>
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script>// JavaScript Document
+         var menuState = 1 // close
+         function open_close() {
+           if(menuState === 0){
+              menuState = 1;
+          document.getElementById("sidebar").style.width = "250px";
+         	    document.getElementById("main").style.marginLeft = "250px";
+         	  document.getElementById("main").style.borderRadius = "10px";
+         	  document.getElementById("main").style.width = "85%";
+         
+           }
+           else {
+              menuState = 0;
+           document.getElementById("sidebar").style.width = "0";
+         	    document.getElementById("main").style.marginLeft = "0";
+         	  document.getElementById("main").style.borderRadius = "0";
+         	  document.getElementById("main").style.width = "99%";
+         
+           }
+         }
+      </script>
+   </head>
+   <body>
+      <div class="topnav">
+         <a href="javascript:void(0)" class="closebtn" onclick="open_close()">X</a>
+         <img id="iu_logo" src="assets\iu-logo.svg">
+         <a routerLink="/login"><img src="assets\defaultuserpicture_fs.png"></a>
+         <a><img src="assets\en.png"></a>
+         <a>...</a>
+      </div>
+      <div id="sidebar" class="sidebar">
+         <p>INTERNATIONALE <br> HOCHSCHULE</p>
+         <a><i class="fa fa-tachometer"></i>DASHBOARD</a>
+         <a><i class="icon fa fa-rss fa-fw"></i>NEWS</a>
+         <a><i class="icon fa fa-share-alt fa-fw"></i>COMMUNITY</a>
+         <a><i class="icon fa fa-sliders fa-fw"></i>STUDIUM VERWALTEN</a>
+         <a><i class="icon fa fa-info-circle fa-fw"></i>INFO-CENTER</a>
+         <a><i class="icon fa fa-question-circle text-info fa-fw"></i>HILFE UND KONTAKT (FAQ)</a>
+         <a><i class="icon fa fa-graduation-cap fa-fw"></i>PROJEKT SOFTWARE ENGINEERING</a>
+         <a><i class="icon fa fa-play-circle fa-fw"></i>VIDEOGALERIE</a>
+         <a routerLink="/kms" style="font-size: 13.1px"><img src="assets\kms_icon.png">KORREKTURMANAGEMENT</a>
+      </div>
+      <div id="main">
+        <table>
+            <tr>
+                <th>
+                    <h1>Login:</h1>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        <label>E-Mail: </label>
+                        <input type="text" [(ngModel)]="email" required>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        <label>Password: </label>
+                        <input type="password" [(ngModel)]="password" required>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        <button type="submit" (click)="login()">Submit</button>
+                    </p>
+                </td>
+            </tr>
+        </table>
+      </div>
+      

@@ -1,146 +1,184 @@
-#grey {
-    background-color: #f1f1f6;
-    height: 110vh;
-    margin-top: 3vh;
-    margin-left: 31vh;
-    border-radius: 10px 10px 10px 10px;
+@charset "utf-8";
+html {background-color: black}
+.sidebar {
+margin: 0;
+padding: 0;
+width: 250px;
+background-color: #000000;
+position: fixed;
+height: 100%;
+overflow: auto;
+}
+.sidebar a {
+display: block;
+color: white;
+padding: 16px;
+text-decoration: none;
+font-size: 14px;
+font-family: arial;
+}
+.sidebar p {
+display: block;
+color: white;
+padding: 0 0 20px 48px;
+margin: 0 0 0 0; 
+text-align: left;
+text-decoration: none;
+}
+.sidebar a:hover:not(.active) {
+background-color: #555;
+color: white;
+}
+.topnav {
+background-color: #000000;
+overflow: hidden;
+width: 100%;
+}
+.topnav .closebtn {
+float:left; 
+}
+.topnav a {
+float: right;
+color: white;
+text-align: center;
+padding: 0 8px;
+text-decoration: none;
+font-size: 17px;
+height: 35px;
+display: table-cell;
+vertical-align: middle 
+}
+.topnav a:hover {
+background-color: #ddd;
+color: black;
+}
+.topnav a.active {
+background-color: #04AA6D;
+color: white;
+}
+.topnav img {
+float: right;
+min-height: 25px; 
+max-height: 30px;
+border-radius: 50%;
+}
+#iu_logo {
+float: left;
+margin: 8px 0 0 16px;
+max-height: 35px;
+}
+#main {
+margin-left: 250px;
+transition: margin-left .1s;
+padding: 10px;
+width: 85%;
+height: 750px;
+background-color: #f1f2f6;
+border-radius: 10px;
+text-align:left; 
+vertical-align: middle;
+display: flex;
+}
+#main > div {
+flex: 1;
+}
+#main .maininhalt {
+color: white;
+}
+#main .maininhalt p{
+flex: 1;
+background-color: #7b9eed;
+margin: 10px;
+padding: 10px;
+min-height: 180px;
+border-radius: 10px;
+}
+.main1div {
+float: left;
+display: flex;
+flex-flow: wrap;
+}
+.main1div > div {
+flex: 1;
+}
+.main1div hr{
+width: 100%;
+flex-basis: 100%;
+height: 0;
+margin: 0;
+border: 0; 
+}
+#main .rechtsinhalt {
+background-color: #ffffff;
+margin: 0 0 0 13px;
+height: 750px;
+min-width: 280px;
+border-radius: 10px;
+flex: 0;
+}
+#main .rechtsinhalt p{
+margin: 10px 10px 10px 10px;
+}
+#main .termine{
+background-color: #dfe7fb;
+border-radius: 10px;
+}
+#kurs1 {
+margin-top: -340px;
+margin-left: 10px;
+background-color: white;
+border-radius: 10px;
+max-height: 180px;
+overflow: hidden;
+transition: margin-left .1s;
+display: flex;
+flex-direction: row;
+align-items: center;
+}
+#kurs1 > div{
+flex: 1;
+}
+#isef_bild img{
+height: 180px;
+max-width: 55%;
+}
+#isef_bild2 img {
+height: 180px;
+max-width: 55%;
+}
+.sidebuttontext {
+font-size: 0.8em;
+hyphens: auto;
+-moz-hyphens: auto;
+-o-hyphens: auto;
+-webkit-hyphens: auto;
+-ms-hyphens: auto;
+}
+#sidebar i{
+float: left;
+padding-right: 17px;
+height: 4vh;
+width: 10%;
+color: white;
+font-size: 22px;
+}
+#sidebar img {
+width: 10%;
+padding-right: 17px;
 }
 
-.sidebuttons {
-    color: #f1f1f6;
-    text-align: left;
+table {
     width: 100%;
-    height: 5vh;
-    padding-top: 2vh;
-    line-height: 3vh;
-
-    .sidebuttontext {
-        font-size: 0.8em;
-        hyphens: auto;
-        -moz-hyphens: auto;
-        -o-hyphens: auto;
-        -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-    }
-
-}
-
-a {
-    text-decoration: none;
-}
-
-.sidebuttonicon {
-    float: left;
-    padding-right: 1vw;
-    padding-left: 1vw;
-    height: 4vh;
-    width: 10%;
-    i {
-        font-size: 1.3333333333em;
-    }
-}
-
-#topsidebutton {
-    margin-top: 5vh;
-    margin-left: 5px;
-    div {
-        padding-right: 0.9vh!important;
-    }
-}
-
-#leftside {
-    width: 17%;
-    float: left;
-    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-}
-
-#xbutton {
-    background-color: lightgray;
-    height: 6vh;
-    width: 6vh;
+    height: auto;
     text-align: center;
-}
-
-#black {
-    background-color: #000!important;
-    height: 130vh;
-    
-}
-
-#whitehead {
-    background-color: white;
-    margin: 2.5vh;
-    margin-right: 2vh;
-    border-radius: 10px;
-    font-family: "SourceSansPro-Bold",sans-serif;
-    width: auto;
-    height: 14vh;
-
-    #whiteheadtext {
-        float: left;
-        h2 {
-            padding: 3vh;
-        }
+    padding: 5px;
+    th {
+        background-color: #4472c4;
     }
-
-    #pic {
-        height: 100%;
-        float: right;
-        padding-right: 4vw;
-        margin: 1vh;
-        img {
-            width: 17vh;
-        }
+    tr:nth-child(even) {
+        background-color: #cfd5ea;
+    }
+    tr:nth-child(odd) {
+        background-color: #e9ebf5;
     }
 }
-
-#body {
-   
- 
-    float: left;
-
-    #whitebody {
-        background-color: white;
-        height: 65vh;
-        border-radius: 10px;
-        margin: 2.5vh;
-        margin-top: 0.5vh;
-        margin-right: 0vw;
-        margin-left: 0vw;
-        float: left;
-        width: 82vw;
-    }
-    table {
-        width: 100%;
-        height: auto;
-        text-align: center;
-        padding: 5px;
-        th {
-            background-color: #4472c4;
-        }
-        tr:nth-child(even) {
-            background-color: #cfd5ea;
-        }
-        tr:nth-child(odd) {
-            background-color: #e9ebf5;
-        }
-    }
-}
-
-#kms_button_text {
-    float: left;
-}
-
-#kms_icon {
-    width: 100%;
-    float: left;
-    margin: 0px;
-    padding: 0px;
-}
-
-#neuerantrag {
-    background-color: #4472c4;
-    width: 10%;
-    height: 10%;
-}
-

@@ -1,124 +1,74 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div id="black">
-    <div id="leftside">
-        <div id="xbutton">
-            <br>
-            X
-        </div>
-        <div class="sidebuttons" id="topsidebutton">
-            <div class="sidebuttonicon">
-                <i class="fa fa-tachometer" aria-hidden="true"></i>
-            </div>
-            <div class="sidebuttontext" id="sidebuttontexttop">
-                DASHBOARD
-            </div>
-        </div>
-        <div class="sidebuttons">
-            <div class="sidebuttonicon">
-                <i class="icon fa fa-rss fa-fw" aria-hidden="true"></i>
-            </div>
-            <div class="sidebuttontext">
-                NEWS
-            </div>
-        </div>
-        <div class="sidebuttons">
-            <div class="sidebuttonicon">
-                <i class="icon fa fa-share-alt fa-fw" aria-hidden="true"></i>
-            </div>
-            <div class="sidebuttontext">
-                COMMUNITY
-            </div>
-        </div>
-        <div class="sidebuttons">
-            <div class="sidebuttonicon">
-                <i class="icon fa fa-sliders fa-fw" aria-hidden="true"></i>
-            </div>
-            <div class="sidebuttontext">
-                STUDIUM VERWALTEN
-            </div>
-        </div>
-        <div class="sidebuttons">
-            <div class="sidebuttonicon">
-                <i class="icon fa fa-info-circle fa-fw" aria-hidden="true"></i>
-            </div>
-            <div class="sidebuttontext">
-                INFO-CENTER
-            </div>
-        </div>
-        <div class="sidebuttons">
-            <div class="sidebuttonicon">
-                <i class="icon fa fa-question-circle text-info fa-fw" aria-hidden="true"></i>
-            </div>
-            <div class="sidebuttontext">
-                HILFE & KONTAKT (FAQ)
-            </div>
-        </div>
-        <div class="sidebuttons">
-            <div class="sidebuttonicon">
-                <i class="icon fa fa-graduation-cap fa-fw" aria-hidden="true"></i>
-            </div>
-            <div class="sidebuttontext">
-                PROJEKT SOFTWARE ENGINEERING
-            </div>
-        </div>
-        <div class="sidebuttons">
-            <div class="sidebuttonicon">
-                <i class="icon fa fa-play-circle fa-fw" aria-hidden="true"></i>
-            </div>
-            <div class="sidebuttontext">
-                VIDEOGALARIE
-            </div>
-        </div>
-        <a routerLink="/kms">
-        <div class="sidebuttons" id="kms_button">
-            <div class="sidebuttonicon">
-                <img id="kms_icon" src="assets/kms_icon.png">
-            </div>
-            <div class="sidebuttontext" id="kms_button_text">
-                KORREKTURMANAGEMENT
-            </div>
-        </div>
-        </a>
-    </div>
-    <br>
-    <div id="grey">
-        <br>
-        <div id="whitehead">
-            <div id="whiteheadtext">
-                <h2>PROJEKT SOFTWARE ENGINEERING</h2>
-            </div>
-            <div id="pic">
-                <img src="assets/pic_Kursseiten.png">
-            </div>
-        </div>
-        <div id="body">
-            <div id="whitebody">
-                <table>
-                    <thead>
-                        <tr>
-                            <!-- <th>ID</th> -->
-                            <th>Benennung</th>
-                            <th>Kategorie</th>
-                            <th>Art</th>
-                            <th>Priorität</th>
-                            <th>Status</th>
-                            <th>Vorschlag öffnen</th>
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script>// JavaScript Document
+         var menuState = 1 // close
+         function open_close() {
+           if(menuState === 0){
+              menuState = 1;
+          document.getElementById("sidebar").style.width = "250px";
+         	    document.getElementById("main").style.marginLeft = "250px";
+         	  document.getElementById("main").style.borderRadius = "10px";
+         	  document.getElementById("main").style.width = "85%";
+         
+           }
+           else {
+              menuState = 0;
+           document.getElementById("sidebar").style.width = "0";
+         	    document.getElementById("main").style.marginLeft = "0";
+         	  document.getElementById("main").style.borderRadius = "0";
+         	  document.getElementById("main").style.width = "99%";
+         
+           }
+         }
+      </script>
+   </head>
+   <body>
+      <div class="topnav">
+         <a href="javascript:void(0)" class="closebtn" onclick="open_close()">X</a>
+         <img id="iu_logo" src="assets\iu-logo.svg">
+         <a routerLink="/login"><img src="assets\defaultuserpicture_fs.png"></a>
+         <a><img src="assets\en.png"></a>
+         <a>...</a>
+      </div>
+      <div id="sidebar" class="sidebar">
+         <p>INTERNATIONALE <br> HOCHSCHULE</p>
+         <a><i class="fa fa-tachometer"></i>DASHBOARD</a>
+         <a><i class="icon fa fa-rss fa-fw"></i>NEWS</a>
+         <a><i class="icon fa fa-share-alt fa-fw"></i>COMMUNITY</a>
+         <a><i class="icon fa fa-sliders fa-fw"></i>STUDIUM VERWALTEN</a>
+         <a><i class="icon fa fa-info-circle fa-fw"></i>INFO-CENTER</a>
+         <a><i class="icon fa fa-question-circle text-info fa-fw"></i>HILFE UND KONTAKT (FAQ)</a>
+         <a><i class="icon fa fa-graduation-cap fa-fw"></i>PROJEKT SOFTWARE ENGINEERING</a>
+         <a><i class="icon fa fa-play-circle fa-fw"></i>VIDEOGALERIE</a>
+         <a routerLink="/kms" style="font-size: 13.1px"><img src="assets\kms_icon.png">KORREKTURMANAGEMENT</a>
+      </div>
+      <div id="main">
+         <div class="main1div">
+            <table>
+                <thead>
+                    <tr>
+                        <!-- <th>ID</th> -->
+                        <th>Benennung</th>
+                        <th>Kategorie</th>
+                        <th>Art</th>
+                        <th>Priorität</th>
+                        <th>Status</th>
+                        <th>Vorschlag öffnen</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let tickets of allOwnCourseTickets">
+                             <!-- <td>{{ tickets._id }}</td> -->
+                            <td>{{ tickets.title }}</td>
+                            <td>{{ tickets.categorie.name }}</td>
+                            <td>{{ tickets.type.name }}</td>
+                            <td>{{ tickets.priority.name }}</td>
+                            <td>{{ tickets.status.name }}</td>
+                            <td>X</td>
                         </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let tickets of allOwnCourseTickets">
-                                 <!-- <td>{{ tickets._id }}</td> -->
-                                <td>{{ tickets.title }}</td>
-                                <td>{{ tickets.categorie.name }}</td>
-                                <td>{{ tickets.type.name }}</td>
-                                <td>{{ tickets.priority.name }}</td>
-                                <td>{{ tickets.status.name }}</td>
-                                <td>X</td>
-                            </tr>
-                            </tbody>
-                </table>
-            
-            </div>
-        </div>
-    </div>
-</div>
+                        </tbody>
+            </table>
+      </div>
