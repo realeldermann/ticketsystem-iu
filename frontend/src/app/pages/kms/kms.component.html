@@ -3,27 +3,6 @@
    <head>
       <meta charset="utf-8">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <script>// JavaScript Document
-         var menuState = 1 // close
-         function open_close() {
-           if(menuState === 0){
-              menuState = 1;
-          document.getElementById("sidebar").style.width = "250px";
-         	    document.getElementById("main").style.marginLeft = "250px";
-         	  document.getElementById("main").style.borderRadius = "10px";
-         	  document.getElementById("main").style.width = "85%";
-         
-           }
-           else {
-              menuState = 0;
-           document.getElementById("sidebar").style.width = "0";
-         	    document.getElementById("main").style.marginLeft = "0";
-         	  document.getElementById("main").style.borderRadius = "0";
-         	  document.getElementById("main").style.width = "99%";
-         
-           }
-         }
-      </script>
    </head>
    <body>
       <div class="topnav">
@@ -60,6 +39,38 @@
                     </tr>
                     </thead>
                     <tbody>
+                     <tr>
+                       <td>test</td>
+                       <td>test</td>
+                       <td>test</td>
+                       <td>test</td>
+                       <td>test</td>
+                       <td>X</td>
+                        </tr>
+                        <tr>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>X</td>
+                     </tr>
+                     <tr>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>X</td>
+                  </tr>
+                     <tr>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>X</td>
+                  </tr>
                         <tr *ngFor="let tickets of allOwnCourseTickets">
                              <!-- <td>{{ tickets._id }}</td> -->
                             <td>{{ tickets.title }}</td>

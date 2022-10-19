@@ -46,7 +46,8 @@ text-decoration: none;
 font-size: 17px;
 height: 35px;
 display: table-cell;
-vertical-align: middle 
+vertical-align: middle;
+margin-top: 5px;
 }
 .topnav a:hover {
 background-color: #ddd;
@@ -58,6 +59,7 @@ color: white;
 }
 .topnav img {
 float: right;
+margin-top: 5px;
 min-height: 25px; 
 max-height: 30px;
 border-radius: 50%;
@@ -72,7 +74,7 @@ margin-left: 250px;
 transition: margin-left .1s;
 padding: 10px;
 width: calc(100% - 270px);
-height: 750px;
+height: 885px;
 background-color: #f1f2f6;
 border-radius: 10px;
 text-align:left; 
@@ -97,6 +99,7 @@ border-radius: 10px;
 float: left;
 display: flex;
 flex-flow: wrap;
+height: 86%;
 }
 .main1div > div {
 flex: 1;
@@ -111,7 +114,7 @@ border: 0;
 #main .rechtsinhalt {
 background-color: #ffffff;
 margin: 0 0 0 13px;
-height: 750px;
+height: 880px;
 min-width: 280px;
 border-radius: 10px;
 flex: 0;

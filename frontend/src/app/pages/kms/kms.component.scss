@@ -97,6 +97,8 @@ border-radius: 10px;
 float: left;
 display: flex;
 flex-flow: wrap;
+height: 15px;
+color: white;
 }
 .main1div > div {
 flex: 1;
@@ -107,6 +109,9 @@ flex-basis: 100%;
 height: 0;
 margin: 0;
 border: 0; 
+}
+.main1div table{
+    color: black;
 }
 #main .rechtsinhalt {
 background-color: #ffffff;
