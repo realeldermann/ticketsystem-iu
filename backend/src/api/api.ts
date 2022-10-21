@@ -12,18 +12,18 @@ let StatusController = require("./status/StatusController")
 let ErrorHandler = require("./error/ErrorHandler")
 import cookieParser from 'cookie-parser'
 
-const app = express()
+const app = express() //deklariert "app" als express
 
-const port = config.get("api.port") as number
+const port = config.get("api.port") as number //get config
 const host = config.get("api.host") as string
 
 
 export function startApi() { //startet REST
-app.use(bodyParser.json())
+app.use(bodyParser.json()) //encodet json
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cookieParser())
+app.use(cookieParser()) //handelt die cookies
 
-app.use(function (req, res, next) {
+app.use(function (req, res, next) { //sicherheit für CHROME
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
@@ -35,12 +35,12 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Ticketsystem API')
 })
 
-app.listen(port, host, () => {
+app.listen(port, host, () => { //sagt wo der Server "Hören" soll
     console.log(`API runs on http://${host}:${port}`)
 
 })
 
-app.use(ErrorHandler)
+app.use(ErrorHandler) //Hier werden die verschiedenen Module importiert
 app.use(CourseController)
 app.use(CategorieController)
 app.use(TicketController)
