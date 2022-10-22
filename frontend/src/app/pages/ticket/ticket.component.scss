@@ -58,7 +58,6 @@ color: white;
 }
 .topnav img {
 float: right;
-margin-top: 5px;
 min-height: 25px; 
 max-height: 30px;
 border-radius: 50%;
@@ -76,9 +75,8 @@ width: calc(100% - 270px);
 height: 93vh;
 background-color: #f1f2f6;
 border-radius: 10px;
-text-align:left; 
+text-align:center; 
 vertical-align: middle;
-display: flex;
 }
 #main > div {
 flex: 1;
@@ -98,8 +96,6 @@ border-radius: 10px;
 float: left;
 display: flex;
 flex-flow: wrap;
-height: 15px;
-color: white;
 }
 .main1div > div {
 flex: 1;
@@ -110,9 +106,6 @@ flex-basis: 100%;
 height: 0;
 margin: 0;
 border: 0; 
-}
-.main1div table{
-    color: black;
 }
 #main .rechtsinhalt {
 background-color: #ffffff;
@@ -174,33 +167,10 @@ padding-right: 17px;
 }
 
 table {
-    width: 100%;
-    height: auto;
     text-align: center;
-    padding: 5px;
-    color: white;
-    th {
-        background-color: #4472c4;
-    }
-    tr:nth-child(even) {
-        background-color: #cfd5ea;
-    }
-    tr:nth-child(odd) {
-        background-color: #e9ebf5;
-    }
-
-    a {
-        text-decoration: none;
-    }
+    vertical-align: middle;
+    margin-left: 35%;
 }
 
-#centerbutton {
-    text-align: center;
 
-    button {
-        background-color: #4472c4;
-        margin: 10px;
-        padding: 10px;
-        border: 1px, black;
-    }
-}
+

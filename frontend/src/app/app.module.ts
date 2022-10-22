@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { KmsComponent } from './pages/kms/kms.component';
+import { TicketComponent } from './pages/ticket/ticket.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    KmsComponent
+    KmsComponent,
+    TicketComponent
   ],
   imports: [
     BrowserModule,

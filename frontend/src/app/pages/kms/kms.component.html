@@ -45,7 +45,7 @@
                        <td>test</td>
                        <td>test</td>
                        <td>test</td>
-                       <td>X</td>
+                       <td><a routerLink="/">X</a></td>
                         </tr>
                         <tr>
                         <td>test</td>
@@ -78,8 +78,11 @@
                             <td>{{ tickets.type.name }}</td>
                             <td>{{ tickets.priority.name }}</td>
                             <td>{{ tickets.status.name }}</td>
-                            <td>X</td>
+                            <td><a routerLink="/">X</a></td>
                         </tr>
                         </tbody>
             </table>
+            <div id="centerbutton">
+               <button routerLink="../ticket">+ Neuer Antrag</button>
+            </div>
       </div>
