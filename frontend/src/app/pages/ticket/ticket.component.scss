@@ -75,7 +75,7 @@ width: calc(100% - 270px);
 height: 93vh;
 background-color: #f1f2f6;
 border-radius: 10px;
-text-align:center; 
+text-align: center; 
 vertical-align: middle;
 }
 #main > div {
@@ -174,3 +174,84 @@ table {
 
 
 
+#centerbutton {
+    text-align: center;
+
+    button {
+        background-color: #4472c4;
+        margin: 10px;
+        padding: 10px;
+        border: 1px, black;
+    }
+}
+
+#updatebutton {
+    height: 100%;
+    width: 100%;
+
+    button {
+        height: 100%;
+        width: 100%;
+        background-color: #4472c4;
+    }
+}
+
+.indiv {
+    margin-top: 5vh;
+    width: 10%;
+    height: 7%;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 1px;
+    float: left;
+    margin-right: 7.3%;
+}
+
+#indiv2 {
+    margin-top: 2vh;
+    width: 10%;
+    height: 7%;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 1px;
+    float: left;
+    margin-right: 7.3%;
+    margin-left: 10%;
+}
+
+.indiv2 {
+    margin-top: 2vh;
+    width: 10%;
+    height: 7%;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 1px;
+    float: left;
+    margin-right: 7.3%;
+}
+
+#leftindiv {
+    margin-left: 10%;
+}
+
+#indivmain {
+    width: 80%;
+    height: 25%;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 1px;
+    margin-left: 10%;
+    margin-top: 25vh;
+    margin-bottom: 2vh;
+}
+
+#indivmain2 {
+    width: 80%;
+    height: 25%;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 1px;
+    margin-left: 10%;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
