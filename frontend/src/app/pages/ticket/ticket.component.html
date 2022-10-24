@@ -48,21 +48,27 @@
       <div id="main">
          <div class="indiv" id="leftindiv">
             Benennung
+            {{ticket.title}}
          </div>
          <div class="indiv">
             Art
+            {{ticket.type.name}}
          </div>
          <div class="indiv">
             Kategorie
+            {{ticket.categorie.name}}
          </div>
          <div class="indiv">
             Priorität
+            {{ticket.priority.name}}
          </div>
          <div class="indiv">
             Status
+            {{ticket.status.name}}
          </div>
          <div id="indiv2">
             Ersteller
+            {{ticket.user.name}}
          </div>
          <div class="indiv2">
             <div id="updatebutton">
@@ -71,9 +77,11 @@
          </div>
          <div id="indivmain">
             Beschreibung
+            {{ticket.text}}
          </div>
          <div id="indivmain2">
             Anmerkung
+            {{ticket.annotation.text}}
          </div>
          <div id="centerbutton">
             <button>Neue Anmerkung</button>

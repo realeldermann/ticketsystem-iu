@@ -39,38 +39,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                     <tr>
-                       <td>test</td>
-                       <td>test</td>
-                       <td>test</td>
-                       <td>test</td>
-                       <td>test</td>
-                       <td><a routerLink="../ticket">X</a></td>
-                        </tr>
-                        <tr>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>X</td>
-                     </tr>
-                     <tr>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>X</td>
-                  </tr>
-                     <tr>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>X</td>
-                  </tr>
                         <tr *ngFor="let tickets of allOwnCourseTickets">
                              <!-- <td>{{ tickets._id }}</td> -->
                             <td>{{ tickets.title }}</td>
@@ -78,7 +46,7 @@
                             <td>{{ tickets.type.name }}</td>
                             <td>{{ tickets.priority.name }}</td>
                             <td>{{ tickets.status.name }}</td>
-                            <td><a routerLink="../ticket">X</a></td>
+                            <td><a routerLink="../ticket/{{tickets._id}}" >X</a></td>
                         </tr>
                         </tbody>
             </table>

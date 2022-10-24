@@ -14,4 +14,8 @@ export class TicketsService {
   getOwnTickets() {
     return this.http.get(this.BASE_URL+'tickets/own/course', {withCredentials: true})
   }
+
+  getTicketById(_id: String) {
+    return this.http.post(this.BASE_URL+'tickets/id/find', {_id: _id} ,{withCredentials: true})
+  }
 }

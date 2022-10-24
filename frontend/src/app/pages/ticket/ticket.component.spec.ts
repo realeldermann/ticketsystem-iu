@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NavigationExtras } from '@angular/router';
 
 import { TicketComponent } from './ticket.component';
 
@@ -23,3 +24,10 @@ describe('TicketComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+let ticketId
+
+let navigationExtras: NavigationExtras = {
+  queryParams: { 'session_id': ticketId },
+  fragment: 'anchor'
+};
