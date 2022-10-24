@@ -132,6 +132,7 @@ margin-right: 10px;
 background-color: white;
 border-radius: 10px;
 max-height: 180px;
+width: 100%;
 overflow: hidden;
 transition: margin-left .1s;
 display: flex;
@@ -176,5 +177,10 @@ padding-right: 17px;
 
 a {
     text-decoration: none;
-    color: black
+    color: black;
+}
+
+#kurslink {
+    width: 100%;
+    margin-right: 20px;
 }
