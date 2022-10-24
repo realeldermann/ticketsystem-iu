@@ -18,4 +18,8 @@ export class TicketsService {
   getTicketById(_id: String) {
     return this.http.post(this.BASE_URL+'tickets/id/find', {_id: _id} ,{withCredentials: true})
   }
+
+  newTicket(title: String, text: String, type: String, categorie: String, priority: String, status: String) {
+    return this.http.post(this.BASE_URL+'tickets', {title: title, text: text, type: type, categorie: categorie, priority: priority, status: status } ,{withCredentials: true})
+  }
 }

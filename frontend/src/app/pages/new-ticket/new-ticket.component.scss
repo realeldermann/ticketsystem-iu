@@ -194,6 +194,19 @@ table {
     border-width: 1px;
     float: left;
     margin-right: 7.3%;
+
+    input {
+        width: 93%;
+        height: 60%;
+    }
+
+    mat-form-field {
+        height: 40%;
+
+        select {
+            height: 100%;
+        }
+    }
 }
 
 #leftindiv {
@@ -209,4 +222,9 @@ table {
     margin-left: 10%;
     margin-top: 15vh;
     margin-bottom: 2vh;
+
+    input {
+        width: 99.2%;
+        height: 95%;
+    }
 }

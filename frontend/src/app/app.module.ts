@@ -9,6 +9,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { KmsComponent } from './pages/kms/kms.component';
 import { TicketComponent } from './pages/ticket/ticket.component';
 import { NewTicketComponent } from './pages/new-ticket/new-ticket.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSelectModule} from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { NewTicketComponent } from './pages/new-ticket/new-ticket.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NoopAnimationsModule,
+    MatSelectModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
