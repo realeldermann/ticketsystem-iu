@@ -131,13 +131,14 @@ margin-left: 10px;
 margin-right: 10px;
 background-color: white;
 border-radius: 10px;
-max-height: 180px;
+max-height: 170px;
 width: 100%;
 overflow: hidden;
 transition: margin-left .1s;
 display: flex;
 flex-direction: row;
 align-items: center;
+cursor: pointer;
 }
 #kurs1 > div{
 flex: 1;
