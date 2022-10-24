@@ -3,7 +3,6 @@
    <head>
       <meta charset="utf-8">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link href="home.component.scss" rel="stylesheet">
       <script>// JavaScript Document
          var menuState = 1 // close
          function open_close() {
@@ -47,36 +46,26 @@
          <a routerLink="/kms" style="font-size: 13.1px"><img src="assets\kms_icon.png">KORREKTURMANAGEMENT</a>
       </div>
       <div id="main">
-         <div class="main1div">
-            <div class="maininhalt">
-               <p>test1</p>
-            </div>
-            <div class="maininhalt">
-               <p>test2</p>
-            </div>
-            <div class="maininhalt">
-               <p>test3</p>
-            </div>
-            <hr>
-            <a routerLink="kms"><div id="kurs1">
-               <div id="isef_bild">
-                  <img src="assets\ISEF01.jpg">
-               </div>
-               <div>
-                  <p>ISEF01</p>
-                  <p>PROJEKT SOFTWARE ENGINEERING</p>
-               </div>
-               <div id="isef_bild2">
-                  <img src="assets\pic_Kursseiten.png">
-               </div>
-            </div></a>
-         </div>
-         <div class="rechtsinhalt">
-            <p><b>MEINE ANSTEHENDEN TERMINE</b></p>
-            <p class="termine"><a>Online-Sprechstunde des Prüfungsservices</a> <br>Morgen, 10:00 » 10:30 </p>
-            <p class="termine"><a>Online-Sprechstunde des Prüfungsservices</a> <br>Morgen, 10:00 » 10:30 </p>
-            <p class="termine"><a>Online-Sprechstunde des Prüfungsservices</a> <br>Morgen, 10:00 » 10:30 </p>
+        <div class="indiv" id="leftindiv">
+            Benennung
+        </div>
+        <div class="indiv">
+            Art
+        </div>
+        <div class="indiv">
+            Kategorie
+        </div>
+        <div class="indiv">
+            Priorität
+        </div>
+        <div class="indiv">
+            Status
+        </div>
+        <div id="indivmain">
+            Beschreibung
+        </div>
+        <div id="centerbutton">
+            <button>Antrag bestätigen</button>
          </div>
       </div>
-   </body>
-</html>
+      

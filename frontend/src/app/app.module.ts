@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { KmsComponent } from './pages/kms/kms.component';
 import { TicketComponent } from './pages/ticket/ticket.component';
+import { NewTicketComponent } from './pages/new-ticket/new-ticket.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TicketComponent } from './pages/ticket/ticket.component';
     HomeComponent,
     LoginComponent,
     KmsComponent,
-    TicketComponent
+    TicketComponent,
+    NewTicketComponent
   ],
   imports: [
     BrowserModule,

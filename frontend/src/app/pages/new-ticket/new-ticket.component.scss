@@ -46,7 +46,7 @@ text-decoration: none;
 font-size: 17px;
 height: 35px;
 display: table-cell;
-vertical-align: middle;
+vertical-align: middle 
 }
 .topnav a:hover {
 background-color: #ddd;
@@ -58,7 +58,6 @@ color: white;
 }
 .topnav img {
 float: right;
-margin-top: 5px;
 min-height: 25px; 
 max-height: 30px;
 border-radius: 50%;
@@ -76,9 +75,8 @@ width: calc(100% - 270px);
 height: 93vh;
 background-color: #f1f2f6;
 border-radius: 10px;
-text-align:left; 
+text-align: center; 
 vertical-align: middle;
-display: flex;
 }
 #main > div {
 flex: 1;
@@ -98,7 +96,6 @@ border-radius: 10px;
 float: left;
 display: flex;
 flex-flow: wrap;
-height: 86%;
 }
 .main1div > div {
 flex: 1;
@@ -113,7 +110,7 @@ border: 0;
 #main .rechtsinhalt {
 background-color: #ffffff;
 margin: 0 0 0 13px;
-height: 880px;
+height: 750px;
 min-width: 280px;
 border-radius: 10px;
 flex: 0;
@@ -126,9 +123,8 @@ background-color: #dfe7fb;
 border-radius: 10px;
 }
 #kurs1 {
-margin-top: -31vh;
+margin-top: -340px;
 margin-left: 10px;
-margin-right: 10px;
 background-color: white;
 border-radius: 10px;
 max-height: 180px;
@@ -141,13 +137,9 @@ align-items: center;
 #kurs1 > div{
 flex: 1;
 }
-#kurs1 img{
-}
 #isef_bild img{
 height: 180px;
 max-width: 55%;
-}
-#isef_inhalt {
 }
 #isef_bild2 img {
 height: 180px;
@@ -174,7 +166,47 @@ width: 10%;
 padding-right: 17px;
 }
 
-a {
-    text-decoration: none;
-    color: black
+table {
+    text-align: center;
+    vertical-align: middle;
+    margin-left: 35%;
+}
+
+
+
+#centerbutton {
+    text-align: center;
+
+    button {
+        background-color: #4472c4;
+        margin: 10px;
+        padding: 10px;
+        border: 1px, black;
+    }
+}
+
+.indiv {
+    margin-top: 5vh;
+    width: 10%;
+    height: 7%;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 1px;
+    float: left;
+    margin-right: 7.3%;
+}
+
+#leftindiv {
+    margin-left: 10%;
+}
+
+#indivmain {
+    width: 80%;
+    height: 50%;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 1px;
+    margin-left: 10%;
+    margin-top: 15vh;
+    margin-bottom: 2vh;
 }
