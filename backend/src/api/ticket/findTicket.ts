@@ -74,7 +74,7 @@ export async function findTicketCourseTutor(args: { _id: string }) { //gibt den 
 
 export async function findTicketById(args: { _id: string }) { //gibt ein via ID gesuchtes Ticket aus
 
-        const ticket = await Ticket.findOne({ _id: new Types.ObjectId(args._id) });     
+        const ticket = await Ticket.findOne({ _id: new Types.ObjectId(args._id) }).populate('user').populate('type').populate('status').populate('priority').populate('annotation').populate('categorie');     
         
         return ticket;
 }

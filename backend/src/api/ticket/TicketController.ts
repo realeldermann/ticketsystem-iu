@@ -64,7 +64,7 @@ router.get('/tickets/own/course', async (req: Request, res: Response) => { //gib
     } 
 })
 
-router.get('/tickets/id/find', async (req: Request, res: Response) => { //Ticket suche nach Ticket ID (if Admin = true)
+router.post('/tickets/id/find', async (req: Request, res: Response) => { //Ticket suche nach Ticket ID (if Admin = true)
   let sessionToken = req.cookies.sessionToken
     if (sessionToken != null || sessionToken != undefined) {
       try {
