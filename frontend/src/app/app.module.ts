@@ -12,6 +12,7 @@ import { NewTicketComponent } from './pages/new-ticket/new-ticket.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CourseComponent } from './pages/course/course.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     LoginComponent,
     KmsComponent,
     TicketComponent,
-    NewTicketComponent
+    NewTicketComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,

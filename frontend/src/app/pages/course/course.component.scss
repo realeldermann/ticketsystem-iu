@@ -113,7 +113,6 @@ border: 0;
 #main .rechtsinhalt {
 background-color: #ffffff;
 margin: 0 0 0 13px;
-height: 880px;
 min-width: 280px;
 border-radius: 10px;
 flex: 0;
@@ -126,8 +125,9 @@ background-color: #dfe7fb;
 border-radius: 10px;
 }
 #kurs1 {
-margin-top: -31vh;
+margin-top: -40vh;
 margin-left: 10px;
+padding-left: 10vw;
 margin-right: 10px;
 background-color: white;
 border-radius: 10px;
