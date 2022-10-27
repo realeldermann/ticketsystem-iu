@@ -76,25 +76,20 @@
             <br>
             {{ticket.user.name}}
          </div>
-         <div class="indiv2">
-            <div id="updatebutton">
-               <button routerLink="../../status/{{ticket._id}}">Status ändern</button>
-            </div>
-         </div>
          <div id="indivmain">
             Beschreibung:
             <br>
             {{ticket.text}}
          </div>
          <div id="indivmain2">
-            Ersteller: {{ticket.annotation?.user.name}}
+            Ersteller: {{ticket.annotation.user.name}}
             <br>
             Anmerkung:
             <br>
-            {{ticket.annotation?.text}}
+            <input type="text" [(ngModel)]="text" required>
          </div>
          <div id="centerbutton">
-            <button routerLink="../../annotation/{{ticket._id}}">Neue Anmerkung</button>
+            <button (click)="newAnnotation()">Anmerkung einreichen</button>
          </div>
       </div>
       

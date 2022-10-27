@@ -69,7 +69,11 @@
          <div class="indiv">
             Status:
             <br>
-            {{ticket.status.name}}
+            <select [(ngModel)]="status">
+                <option value="63153fcb5867384124069434">In Bearbeitung</option>
+                <option value="63153fe3586738412406943c">Abgeschlossen</option>
+                <option value="63153fd75867384124069438">Abgelehnt</option>
+             </select>
          </div>
          <div id="indiv2">
             Ersteller:
@@ -78,7 +82,7 @@
          </div>
          <div class="indiv2">
             <div id="updatebutton">
-               <button routerLink="../../status/{{ticket._id}}">Status ändern</button>
+               <button (click)="newStatus()">Bestätigen</button>
             </div>
          </div>
          <div id="indivmain">
@@ -87,11 +91,10 @@
             {{ticket.text}}
          </div>
          <div id="indivmain2">
-            Ersteller: {{ticket.annotation?.user.name}}
+            Ersteller: {{ticket.annotation.user.name}}
             <br>
             Anmerkung:
-            <br>
-            {{ticket.annotation?.text}}
+            {{ticket.annotation.text}}
          </div>
          <div id="centerbutton">
             <button routerLink="../../annotation/{{ticket._id}}">Neue Anmerkung</button>

@@ -19,8 +19,8 @@ ticket: any;
       tickets.getTicketById(id ?? '').subscribe(ticket => {
         console.log(ticket)
         this.ticket = ticket
-      })
     })
+  })
   }
 
   ngOnInit(): void {
