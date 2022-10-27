@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class TicketsService {
 
-  BASE_URL = 'http://massivebutdynamic.com:3123/';
+  BASE_URL = 'http://localhost:3123/';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -19,7 +19,28 @@ export class TicketsService {
     return this.http.post(this.BASE_URL+'tickets/id/find', {_id: _id} ,{withCredentials: true})
   }
 
-  newTicket(title: String, text: String, type: String, categorie: String, priority: String, status: String) {
-    return this.http.post(this.BASE_URL+'tickets', {title: title, text: text, type: type, categorie: categorie, priority: priority, status: status } ,{withCredentials: true})
+  
+
+  newTicket(title: string, status: string, priority: string, text: string, categorie: string, course: string, type: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.BASE_URL+'tickets', {
+        title: title,
+        status: status,
+        priority: priority,
+        text: text,
+        categorie: categorie,
+        course: course,
+        annotation: null,
+        type: type
+      }, {responseType: "text", observe: 'response', withCredentials: true} 
+      ).subscribe({
+        next: (result: any) => {
+          if(result.status != 200) reject(result.error ?? '');
+          resolve();
+        }, 
+        error: err => reject(err)
+      });
+    })
   }
+
 }

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class UsersService {
 
-  BASE_URL = 'http://massivebutdynamic.com:3123/';
+  BASE_URL = 'http://localhost:3123/';
 
   constructor(private http: HttpClient, private router: Router) { }
 

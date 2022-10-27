@@ -48,27 +48,54 @@
       <div id="main">
         <div class="indiv" id="leftindiv">
             Benennung:
-            <input type="text">
+            <br>
+            <input type="text" [(ngModel)]="title" required>
         </div>
         <div class="indiv">
             Art:
-            
+            <br>
+            <select [(ngModel)]="type">
+               <option value="6310e1b223ccf6a272f67a00">Fehlermeldung</option>
+               <option value="6310e1eb23ccf6a272f67a04">Verbesserungsvorschlag</option>
+               <option value="6310e1fc23ccf6a272f67a08">Ergänzung</option>
+            </select>
         </div>
         <div class="indiv">
             Kategorie:
+            <br>
+            <select [(ngModel)]="categorie">
+               <option value="6310e52023ccf6a272f67a0c">Skript</option>
+               <option value="6310e53123ccf6a272f67a10">Vodcast</option>
+               <option value="6310e53c23ccf6a272f67a14">MyCampus</option>
+               <option value="6310e54a23ccf6a272f67a18">Literaturangaben</option>
+               <option value="6310e55523ccf6a272f67a1c">Coursefeed</option>
+               <option value="6310e56723ccf6a272f67a20">IULearnApp</option>
+               <option value="6310e57423ccf6a272f67a24">Musterklausur</option>
+               <option value="6310e57c23ccf6a272f67a28">Sonstieges</option>
+            </select>
         </div>
         <div class="indiv">
             Priorität:
+            <br>
+            <select [(ngModel)]="priority">
+               <option value="63153dc5c5f6cf6262dc588b">Hoch</option>
+               <option value="63153dd3c5f6cf6262dc588f">Mittel</option>
+               <option value="63153dedc5f6cf6262dc5893">Niedrig</option>
+            </select>
         </div>
         <div class="indiv">
             Status:
+            <br>
+            <select [(ngModel)]="status">
+               <option value="63153fb95867384124069430">Eingebracht</option>
+            </select>
         </div>
         <div id="indivmain">
             Beschreibung:
-            <input type="text">
+            <input type="text" [(ngModel)]="text" required>
         </div>
         <div id="centerbutton">
-            <button>Antrag bestätigen</button>
+            <button type="submit" (click)="newTicket()">Antrag bestätigen</button>
          </div>
       </div>
       
