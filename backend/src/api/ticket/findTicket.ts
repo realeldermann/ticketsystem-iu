@@ -66,6 +66,7 @@ export async function findTicketCourseTutor(args: { _id: string }) { //gibt den 
         const ticketCourse = await findTicketCourseById({_id: args._id})
         if (ticketCourse != undefined){
                 const courseTutor = await findCourseTutor({_id: ticketCourse})  
+                console.log("Ticket Course Tutor: " + courseTutor)
                 return courseTutor;
         } else {
                 return null
@@ -102,6 +103,5 @@ export async function findTicketByCourse(args: { course: string }) { //gibt alle
 
 export async function findTicketCourseById(args: { _id: string }) { //gibt den Kurs eines via ID gesuchten Tickets aus
         const ticket = await Ticket.findOne({ _id: new Types.ObjectId(args._id) });     
-        
         return ticket?.course.toString();
 }

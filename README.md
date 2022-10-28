@@ -17,8 +17,7 @@ Ticketsystem zum Software Engineering Projekt an der IU
 - [x] Struktur aufbauen
 - [x] Schlichtes Design
 - [x] Reale Daten abrufen
-- [ ] Reale Daten Speichern
-- [ ] Mobile und Desktop Optimieren
+- [x] Reale Daten Speichern
 - [ ] Aufräumen
 ## Backend
 - [x] Nodejs aufsetzen 

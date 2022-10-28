@@ -68,7 +68,7 @@ router.post('/tickets/id/find', async (req: Request, res: Response) => { //Ticke
   let sessionToken = req.cookies.sessionToken
     if (sessionToken != null || sessionToken != undefined) {
       try {
-        if (await checkSessionUserIsAdmin({ sessionToken })) {
+        if (await checkSessionUserIsAdmin({ sessionToken }) || (await checkSessionUserCourses({sessionToken})?? '').toString() == (await findTicketCourseById({_id: req.body._id})?? '').toString()) {
           const ticket = await findTicketById(req.body)
           res.send(ticket)
         } else {
@@ -203,7 +203,7 @@ router.post('/tickets', async (req: Request, res: Response) => { //erstellt ein 
 router.post('/tickets/annotation', async (req: Request, res: Response) => { //erstellt eine neue Ticket anmerkung / Kommentar if course = user course oder if Admin = true
   let sessionToken = req.cookies.sessionToken
     if (sessionToken != null || sessionToken != undefined) { 
-      if (((await checkSessionUserCourses({sessionToken})?? '').toString() == (await findTicketCourseById(req.body._id))) || ((await checkSessionCourseTutor({sessionToken})?? '').toString() == (await findTicketCourseTutor(req.body._id)?? '').toString()) || ((await checkSessionUserIsAdmin({ sessionToken })) == true)) {
+      if (((await checkSessionUserCourses({sessionToken})?? '').toString() == (await findTicketCourseById({_id: req.body._id}))) || ((await checkSessionCourseTutor({sessionToken})?? '').toString() == (await findTicketCourseTutor(req.body._id)?? '').toString()) || ((await checkSessionUserIsAdmin({ sessionToken })) == true)) {
        try {
           await Ticket.findByIdAndUpdate(
             { _id: req.body._id},
@@ -296,12 +296,17 @@ router.post('/tickets/update/priority', async (req: Request, res: Response) => {
 })
 
 router.post('/tickets/update/status', async (req: Request, res: Response) => {//ändert den Status eines Tickets by ID
-  try {
-    await updateTicketStatus(req.body)
-    res.sendStatus(200)
-  } catch(e) {
-    console.error(e);
-    throw new Error('Internal server error');
+  let sessionToken = req.cookies.sessionToken
+  if ((await checkSessionUser({sessionToken})?? '').toString() == (await findTicketCourseTutor({_id: req.body._id})?? '').toString() || await checkSessionUserIsAdmin({ sessionToken }) == true) {
+    try {
+      await updateTicketStatus(req.body)
+      res.sendStatus(200)
+    } catch(e) {
+      console.error(e);
+      throw new Error('Internal server error');
+    }
+  } else {
+    res.sendStatus(403)
   }
 })
 

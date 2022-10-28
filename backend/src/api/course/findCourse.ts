@@ -3,7 +3,7 @@ import Course from "../../db/schemas/Course.schema";
 
 export async function findCourseTutor(args: { _id: string }) { //gibt den Tutor eines Kurses via ID aus
     const course = await Course.findOne({ _id: new Types.ObjectId(args._id) });     
-    console.log("Tutor: " + course?.tutor)
+    console.log("Tutor via ID: " + course?.tutor)
 
     return course?.tutor;
 }
@@ -24,7 +24,7 @@ export async function findTutorCourse(args: { tutor: string }) { //gibt den Kurs
 
 export async function findTutorCourseId(args: { tutor: string }) { //gibt die Kurs id eines Tutor aus
     const course = await Course.findOne({ tutor: args.tutor });     
-    console.log("Kurs id: " + course?._id)
+    console.log("Kurs id gg: " + course?._id)
 
     return course?._id;
 }

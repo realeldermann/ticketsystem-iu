@@ -1,6 +1,6 @@
 {
   "name": "ticketsystem-iu",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Ticketsystem zum Software Engineering Projekt an der IU",
   "main": "app.js",
   "scripts": {

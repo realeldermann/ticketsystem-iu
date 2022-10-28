@@ -37,7 +37,7 @@ export async function checkSessionCourseTutor(args: {sessionToken: string}) { //
                 if (sessionTutorCourseId != undefined) {
                     let sessionTutorCourseIdString = sessionTutorCourseId.toString()
                     const courseTutor = await findCourseTutor({_id: sessionTutorCourseIdString})
-                    console.log("Kurs Tutor: " + courseTutor)
+                    console.log("Stage2 Kurs Tutor: " + courseTutor)
                     return courseTutor
                 } else {
                     return null
