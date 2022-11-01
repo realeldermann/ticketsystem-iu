@@ -80,6 +80,11 @@
             <br>
             {{ticket.user.name}}
          </div>
+         <div id="indivdate">
+            Erstellt am:
+            <br>
+            {{ticket.created}}
+         </div>
          <div class="indiv2">
             <div id="updatebutton">
                <button (click)="newStatus()">Bestätigen</button>
@@ -91,10 +96,12 @@
             {{ticket.text}}
          </div>
          <div id="indivmain2">
-            Ersteller: {{ticket.annotation.user.name}}
+            Ersteller: {{ticket.annotation?.user.name}}
+            <br>
+            Erstellt am: {{ticket.annotation?.created}}
             <br>
             Anmerkung:
-            {{ticket.annotation.text}}
+            {{ticket.annotation?.text}}
          </div>
          <div id="centerbutton">
             <button routerLink="../../annotation/{{ticket._id}}">Neue Anmerkung</button>

@@ -200,7 +200,7 @@ table {
 .indiv {
     margin-top: 5vh;
     width: 12%;
-    height: 7%;
+    height: 9%;
     border-color: #000000;
     border-style: solid;
     border-width: 1px;
@@ -211,7 +211,7 @@ table {
 #indiv2 {
     margin-top: 2vh;
     width: 12%;
-    height: 7%;
+    height: 9%;
     border-color: #000000;
     border-style: solid;
     border-width: 1px;
@@ -223,10 +223,22 @@ table {
 .indiv2 {
     margin-top: 2vh;
     width: 12%;
-    height: 7%;
+    height: 9%;
     border-color: #000000;
     border-style: solid;
     border-width: 1px;
+    margin-right: 4.8%;
+    float: left;
+}
+
+#indivdate {
+    margin-top: 2vh;
+    width: 12%;
+    height: 9%;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 1px;
+    margin-right: 4.8%;
     float: left;
 }
 
@@ -241,7 +253,7 @@ table {
     border-style: solid;
     border-width: 1px;
     margin-left: 10%;
-    margin-top: 25vh;
+    margin-top: 27vh;
     margin-bottom: 2vh;
 }
 

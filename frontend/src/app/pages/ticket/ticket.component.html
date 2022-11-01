@@ -76,6 +76,11 @@
             <br>
             {{ticket.user.name}}
          </div>
+         <div id="indivdate">
+            Erstellt am:
+            <br>
+            {{ticket.created}}
+         </div>
          <div class="indiv2">
             <div id="updatebutton">
                <button routerLink="../../status/{{ticket._id}}">Status ändern</button>
@@ -88,6 +93,8 @@
          </div>
          <div id="indivmain2">
             Ersteller: {{ticket.annotation?.user.name}}
+            <br>
+            Erstellt am: {{ticket.annotation?.created}}
             <br>
             Anmerkung:
             <br>
