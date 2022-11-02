@@ -129,29 +129,7 @@ margin: 10px 10px 10px 10px;
 background-color: #dfe7fb;
 border-radius: 10px;
 }
-#kurs1 {
-margin-top: -340px;
-margin-left: 10px;
-background-color: white;
-border-radius: 10px;
-max-height: 180px;
-overflow: hidden;
-transition: margin-left .1s;
-display: flex;
-flex-direction: row;
-align-items: center;
-}
-#kurs1 > div{
-flex: 1;
-}
-#isef_bild img{
-height: 180px;
-max-width: 55%;
-}
-#isef_bild2 img {
-height: 180px;
-max-width: 55%;
-}
+ 
 .sidebuttontext {
 font-size: 0.8em;
 hyphens: auto;
@@ -208,4 +186,8 @@ table {
 a {
     text-decoration: none;
     color: black;
+}
+
+#tickets {
+    background-color: white;
 }
