@@ -9,6 +9,7 @@ import { IStatus } from "./IStatus.interface";
 
 export interface ITicket {
     _id?: Types.ObjectId,
+    id: Number,
     title: string,
     created: Date,
     status: Types.ObjectId | IStatus,

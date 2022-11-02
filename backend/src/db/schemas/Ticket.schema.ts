@@ -2,6 +2,7 @@ import { model, Schema } from "mongoose";
 import { ITicket } from "../../interfaces/ITicket.interface";
 
 const ticketSchema = new Schema<ITicket>({
+    id: Number,
     title: String,
     created: Date,
     status: { type: 'ObjectId', ref: 'Status' },
@@ -11,7 +12,7 @@ const ticketSchema = new Schema<ITicket>({
     course: { type: 'ObjectId', ref: 'Course' },
     user: { type: 'ObjectId', ref: 'User' },
     annotation: { type: 'ObjectId', ref: 'Annotation' },
-    type: { type: 'ObjectId', ref: 'Type' }
+    type: { type: 'ObjectId', ref: 'Type' },
 });
 
 const Ticket = model<ITicket>('Ticket', ticketSchema);

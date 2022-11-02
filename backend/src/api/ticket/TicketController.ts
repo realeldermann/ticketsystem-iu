@@ -175,6 +175,7 @@ router.post('/tickets', async (req: Request, res: Response) => { //erstellt ein 
       if ((await checkSessionUserCourses({sessionToken})?? '').toString() == req.body.course || (await checkSessionUserIsAdmin({ sessionToken })) == true) {
        try {
         const ticket = new Ticket({
+          id: (await Ticket.count() + 1),
           title: req.body.title,
           created: new Date(),
           status: req.body.status,
