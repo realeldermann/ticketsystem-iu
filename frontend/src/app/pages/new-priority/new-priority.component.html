@@ -64,7 +64,11 @@
          <div class="indiv">
             Priorität:
             <br>
-            {{ticket.priority.name}}
+            <select [(ngModel)]="priority">
+                <option value="63153dc5c5f6cf6262dc588b">Hoch</option>
+                <option value="63153dd3c5f6cf6262dc588f">Mittel</option>
+                <option value="63153dedc5f6cf6262dc5893">Niedrig</option>
+             </select>
          </div>
          <div class="indiv">
             Status:
@@ -81,14 +85,9 @@
             <br>
             {{ticket.created}}
          </div>
-         <div class="indiv3">
-            <div id="updatebutton">
-               <button routerLink="../../status/{{ticket._id}}">Status ändern</button>
-            </div>
-         </div>
          <div class="indiv2">
             <div id="updatebutton">
-               <button routerLink="../../priority/{{ticket._id}}">Priorität ändern</button>
+               <button (click)="newPriority()">Bestätigen</button>
             </div>
          </div>
          <div id="indivmain">
@@ -102,7 +101,6 @@
             Erstellt am: {{ticket.annotation?.created}}
             <br>
             Anmerkung:
-            <br>
             {{ticket.annotation?.text}}
          </div>
          <div id="centerbutton">

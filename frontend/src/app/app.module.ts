@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { CourseComponent } from './pages/course/course.component';
 import { NewAnnotationComponent } from './pages/new-annotation/new-annotation.component';
 import { NewStatusComponent } from './pages/new-status/new-status.component';
+import { NewPriorityComponent } from './pages/new-priority/new-priority.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NewStatusComponent } from './pages/new-status/new-status.component';
     NewTicketComponent,
     CourseComponent,
     NewAnnotationComponent,
-    NewStatusComponent
+    NewStatusComponent,
+    NewPriorityComponent
   ],
   imports: [
     BrowserModule,

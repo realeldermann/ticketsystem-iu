@@ -75,4 +75,20 @@ export class TicketsService {
     })
   }
 
+  newPriority(priority: string, _id: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.BASE_URL+'tickets/update/priority', {
+        _id: _id,
+        priority: priority
+      }, {responseType: "text", observe: 'response', withCredentials: true} 
+      ).subscribe({
+        next: (result: any) => {
+          if(result.status != 200) reject(result.error ?? '');
+          resolve();
+        }, 
+        error: err => reject(err)
+      });
+    })
+  }
+
 }
