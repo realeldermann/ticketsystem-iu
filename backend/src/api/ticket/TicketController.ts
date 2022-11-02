@@ -286,12 +286,17 @@ router.post('/tickets/update/categorie', async (req: Request, res: Response) => 
 })
 
 router.post('/tickets/update/priority', async (req: Request, res: Response) => {//ändert die Priorität eines Tickets by ID
-  try {
-    await updateTicketPriority(req.body)
-    res.sendStatus(200)
-  } catch(e) {
-    console.error(e);
-    throw new Error('Internal server error');
+  let sessionToken = req.cookies.sessionToken
+  if ((await checkSessionUser({sessionToken})?? '').toString() == (await findTicketCourseTutor({_id: req.body._id})?? '').toString() || await checkSessionUserIsAdmin({ sessionToken }) == true) {
+    try {
+     await updateTicketPriority(req.body)
+     res.sendStatus(200)
+    } catch(e) {
+      console.error(e);
+      throw new Error('Internal server error');
+    }
+  } else {
+    res.sendStatus(403)
   }
 })
 
