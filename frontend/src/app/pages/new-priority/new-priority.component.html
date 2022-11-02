@@ -47,6 +47,11 @@
       </div>
       <div id="main">
          <div class="indiv" id="leftindiv">
+            ID:
+            <br>
+            {{ticket.id}}
+         </div>
+         <div class="indiv">
             Benennung:
             <br>
             {{ticket.title}}
@@ -55,11 +60,6 @@
             Art:
             <br>
             {{ticket.type.name}}
-         </div>
-         <div class="indiv">
-            Kategorie:
-            <br>
-            {{ticket.categorie.name}}
          </div>
          <div class="indiv">
             Priorität:
@@ -76,6 +76,11 @@
             {{ticket.status.name}}
          </div>
          <div id="indiv2">
+            Kategorie:
+            <br>
+            {{ticket.categorie.name}}
+         </div>
+         <div id="indivdate">
             Ersteller:
             <br>
             {{ticket.user.name}}
@@ -83,12 +88,7 @@
          <div id="indivdate">
             Erstellt am:
             <br>
-            {{ticket.created}}
-         </div>
-         <div id="indivdate">
-            ID:
-            <br>
-            {{ticket.id}}
+            {{ticket.created | date  : 'short'}}
          </div>
          <div class="indiv2">
             <div id="updatebutton">

@@ -21,13 +21,13 @@ export class NewPriorityComponent implements OnInit {
       tickets.getTicketById(this.id ?? '').subscribe(ticket => {
         console.log(ticket)
         this.ticket = ticket
+        this.priority = this.ticket.priority._id
       })
     })
   }
 
   ngOnInit(): void {
   }
-
   async newPriority() {
     console.log(this.priority);
     try {

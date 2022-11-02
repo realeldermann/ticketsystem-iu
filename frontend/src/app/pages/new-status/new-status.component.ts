@@ -21,6 +21,7 @@ export class NewStatusComponent implements OnInit {
       tickets.getTicketById(this.id ?? '').subscribe(ticket => {
         console.log(ticket)
         this.ticket = ticket
+        this.status = this.ticket.status._id
       })
     })
   }
