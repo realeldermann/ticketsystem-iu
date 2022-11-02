@@ -29,7 +29,7 @@
             <table>
                 <thead>
                     <tr>
-                        <!-- <th>ID</th> -->
+                        <th>ID</th>
                         <th>Benennung</th>
                         <th>Kategorie</th>
                         <th>Art</th>
@@ -40,7 +40,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let tickets of allOwnCourseTickets">
-                             <!-- <td>{{ tickets._id }}</td> -->
+                            <td>{{ tickets.id }}</td>
                             <td>{{ tickets.title }}</td>
                             <td>{{ tickets.categorie.name }}</td>
                             <td>{{ tickets.type.name }}</td>
