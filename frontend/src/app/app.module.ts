@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,6 +16,10 @@ import { CourseComponent } from './pages/course/course.component';
 import { NewAnnotationComponent } from './pages/new-annotation/new-annotation.component';
 import { NewStatusComponent } from './pages/new-status/new-status.component';
 import { NewPriorityComponent } from './pages/new-priority/new-priority.component';
+import localeDe from '@angular/common/locales/de';
+import localeDeExtra from '@angular/common/locales/extra/de';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeDe, localeDeExtra);
 
 @NgModule({
   declarations: [
@@ -39,7 +43,9 @@ import { NewPriorityComponent } from './pages/new-priority/new-priority.componen
     MatSelectModule,
     MatFormFieldModule,
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'de' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

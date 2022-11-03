@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, LOCALE_ID, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TicketsService } from 'src/app/services/tickets.service';
 
@@ -10,7 +10,6 @@ import { TicketsService } from 'src/app/services/tickets.service';
 })
 export class TicketComponent implements OnInit {
 ticket: any;
-
 
   constructor(private route: ActivatedRoute, private tickets: TicketsService) { 
     route.paramMap.subscribe(params => {
