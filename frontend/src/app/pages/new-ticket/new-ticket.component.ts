@@ -10,7 +10,7 @@ import { TicketsService } from 'src/app/services/tickets.service';
 export class NewTicketComponent implements OnInit {
 
   title = '';
-  status = '';
+  status = '63153fb95867384124069430';
   priority = '';
   text = '';
   categorie = '';
