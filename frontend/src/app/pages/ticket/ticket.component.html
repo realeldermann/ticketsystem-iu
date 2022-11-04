@@ -104,7 +104,7 @@
          <div id="indivmain2">
             Ersteller: {{ticket.annotation?.user.name}}
             <br>
-            Erstellt am: {{ticket.annotation?.created}}
+            Erstellt am: {{ticket.annotation?.created | date  : 'short' }}
             <br>
             Anmerkung:
             <br>
