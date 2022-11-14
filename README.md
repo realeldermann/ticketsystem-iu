@@ -18,7 +18,7 @@ Ticketsystem zum Software Engineering Projekt an der IU
 - [x] Schlichtes Design
 - [x] Reale Daten abrufen
 - [x] Reale Daten Speichern
-- [ ] Aufräumen
+- [x] Aufräumen
 ## Backend
 - [x] Nodejs aufsetzen 
 - [x] TypeScript aufsetzten
@@ -37,5 +37,3 @@ Ticketsystem zum Software Engineering Projekt an der IU
 - [x] Alle Berechtigungen über Session komplett
 - [x] Logout hinzugefügt
 - [x] Tickets bearbeiten hinzugefügt
-- [ ] IT-Sicherheit geprüft
-- [ ] Unit Tests
