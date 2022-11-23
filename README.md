@@ -11,6 +11,18 @@ Ticketsystem zum Software Engineering Projekt an der IU
 - Mongoose
 - REST via Express
 
+## Installation
+
+- MongoDB installieren (Docker oder normal)
+- git clone repo (herunterladen der Dateien)
+- npm install (einmal im frontend und backend Ordner)
+- In der backend Config die Datenbank zugänglich machen
+- npm start (zum starten des Backends)
+- ng serve zum starten von Angular (Frontend)
+
+- Angular über den configurierten Link aufrufen
+
+
 # ToDo
 ## Frontend
 - [x] Angular aufsetzen
@@ -18,7 +30,7 @@ Ticketsystem zum Software Engineering Projekt an der IU
 - [x] Schlichtes Design
 - [x] Reale Daten abrufen
 - [x] Reale Daten Speichern
-- [ ] Aufräumen
+- [x] Aufräumen
 ## Backend
 - [x] Nodejs aufsetzen 
 - [x] TypeScript aufsetzten
@@ -37,5 +49,3 @@ Ticketsystem zum Software Engineering Projekt an der IU
 - [x] Alle Berechtigungen über Session komplett
 - [x] Logout hinzugefügt
 - [x] Tickets bearbeiten hinzugefügt
-- [ ] IT-Sicherheit geprüft
-- [ ] Unit Tests
